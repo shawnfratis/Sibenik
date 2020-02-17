@@ -1,0 +1,159 @@
+fg3d 2020 - code name: Sibenik
+Shawn L. Fratis - shawnfratis@gmail.com
+
+This is the most up-to-date (2/17/2020) version of my 2d/3d graphics package that I've been working on for 1 million years or so. It is an ongoing project. I am currently using this software in a film project so I am getting "real-world" results, as well as getting new ideas. Please visit Fratisgraphics on Facebook to see my most recent samples. 
+
+Below are all my notes/ideas/to do lists. It is a mess but it's all there ;).
+
+#################################################################################
+
+FG3D/SIBENIK-3D PROGRAM:
+
+########################
+
+WORK ON INPUT - INTERPERETED? - STRIP COMMENTS - CODE IN BUTTON
+
+TERRAIN Y VAL INPUT METHOD(S) - CONNECT PLANES FOR BIGGER SURFACE
+
+TRIS?
+
+fix sphere inputs
+
+fix ui buttons!
+
+cylinders--make spacewalk with it
+
+finish voxels/math - -vox (directions , ran etc? , VOX PLANE) --see below
+
+use strip and interpereter?
+system copy paste or sim?
+xyz grid for ref?
+MORE REPLICATING TOOLS!!!
+DISTRIBUTIONS
+CODE EDITOR-TEXT STRIP
+multiplier/random/distribute vox or ??
+
+procedure main()
+    local L
+    L := list(1000)
+    every L[1 to 1000] := 1.0 + 0.5 * sqrt(-2.0 * log(?0)) * cos(2.0 * &pi * ?0)
+ 
+    every write(!L)
+end
+
+SPHERES +tubes+terrain [fix input methods-tpin vox etc] test aspect etc w ffmpeg-probb fixed - for movie: SPHERES + tubes+terrain + REST OF PROGRAM STUFF SEE INFO  + features fror sx - correct aspect for ffmpeg - clean up ui's - animate objects - test test test
+ 
+manifold:
+000
+003
+000
+002
+003
+000
+003
+000
+010
+000
+000
+000
+1
+
+INPUT TEXTURED PLANES - 4 POINTS. no limit for tex name ---DONE?
+
+POSITION REFERENCE - 3 GRIDPLANE IN PROG? LIKE RAYDREAM ---DONE?
+
+INPUT SPHERES - SIZE PLUS ROTATE FUNCION (90d). - ADD MORE SPHERES TO TPIN TO TEST INPUT--Rotate(2.0,2.0,2.0) added -- not working
+
+INPUT CYLINDERS - SIZE, TAPER (CONES). 3 ROTATE FUNCTIONS (Y-Y, X-X, Z-Z).
+
+INPUT CODE - COMMENTS, LINE NUMBERS
+
+MESH WITH SINGLE IMAGE (QUADS? TRIS?) TERRAIN, ETC "texcoord=" CONTROL Y VALS (EXT?)- RAN FUNCS POINTS - RANDOMIZE BY FRAME FOR "WATER" ETC ANIMATION
+
+fix earth and sky - base tex in code
+
+VOXELIZED-CUBE FROM PLANES-VOXEL MATH - SINGLE POINT REF -texcubein()
+
+add points + etc -- spheres, sprites for fire smoke stars etc
+
+MORE FRAMES - MORE TEX NUMBERS
+
+figure out cam increments
+
+CLEAN UP FILES
+
+ADD TEXT INPUT BUTTON(S) - AP
+
+rotate params for cyl spheres etc
+
+PLY PARAMS TO PLANE - ADD EXTRA DIGITS FOR MORE TEXTURES? MORE FRAMES?
+
+ADD OTHER TEXT INPUTS W/ TEXT BUTTON - SPHERE,CYLINDER,CONES,TERRAIN,POINTS PLUS OTHERS
+
+TEX EDIT PARAM REF? TEX EDIT PROGRAM W 3D REF?
+
+SEE ALL COMMANDS IN MANUAL (IMAGE PLANES, ETC ETC)
+
+ONE IMAGE ON MULTIPLE PLANES/FACETS - or vox cubes "texcoord="
+
+USE AS IMAGE/ETC EDITOR?
+
+stuff from icon-gamma, algorithms, interpreter, etc etc
+
+sdraw intergrate - sys call?
+
+NAV CONTROL - text_button_16 TextButton AE on_miLoadModel
+
+INP on_text_button_19    text_button_19
+
+TEXT BOX - TO TEXT FILE - TO PROG?
+
+INTPUT EACH SHAPE - (AKA SPHERE FIRST ETC)
+
+some kind of algoritmic animation using icon stuff?
+
+non-tex stuff
+
+
+
+
+#################################################################################
+
+SDRAW01-2D DRAW AND ANIMATION PROGRAM:
+
+#######################################
+
+more colors/grads/grad to black for draw prog--
+
+im seq out from movie for ani and 3d prog input
+
+
+
+
+#################################################################################
+
+FRATISBASTARD-FFMPEG CONTROLLER:
+
+##################################
+
+ffmpeg
+FFMPEG - - for movie: use sys calls to control ffmpeg - test aspect etc w ffmpeg-probb fixed ---for ffmpeg test  - finish convolve+others [figure input path for filters--diff entries for png names etc] - render 48-frun i1 1.mp4- next 48-frun i2 2.mp4 etc.
+see INFo!!!!!!!!!!!!!!!!!!!!!!!!
+
+ffmpeg
+FFMPEG - -  - finish convolve+others [figure input path for filters--
+ffmpeg viewer command---see other filters, editing etc
+see INFo!!!!!!!!!!!!!!!!!!!!!!!!
+
+ffmpeg
+ffmpeg
+FFMPEG - - use sys calls to control ffmpeg - correct aspect ratios and frame rates -more features test
+
+viewer in ffmpeg - etc -filters - editing
+
+
+
+
+
+
+

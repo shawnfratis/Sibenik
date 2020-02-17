@@ -1,0 +1,246 @@
+#Fratisbastard ffmpeg functioner thing
+#Experimental - interface for ffmpeg functions
+#ADD MORE USEFUL THINGS
+#ARGS ARE VARS TO DIFFERENT FUNCTIONS
+
+link interact
+link options
+link wopen
+
+procedure main(args)
+
+write("WELCOME TO FRATISBASTARD - m for MENU")
+
+# # # # # # # 
+
+#IM SEQ W/24 FPS FORCE out (ffxx)
+
+if args[1] == "a" then system("ffmpeg -f image2 -i ff%02d.png -r 24 output1.mp4")
+if args[1] == "b" then system("ffmpeg -f image2 -i ff%02d.png -r 24 output2.mp4")
+if args[1] == "c" then system("ffmpeg -f image2 -i ff%02d.png -r 24 output3.mp4")
+if args[1] == "d" then system("ffmpeg -f image2 -i ff%02d.png -r 24 output4.mp4")
+if args[1] == "e" then system("ffmpeg -f image2 -i ff%02d.png -r 24 output5.mp4")
+
+# # # # # # #  
+
+#IM SEQ W/24 FPS FORCE out (fxx)
+
+if args[1] == "f" then system("ffmpeg -f image2 -i f%02d.png -r 24 output21.mp4")
+if args[1] == "g" then system("ffmpeg -f image2 -i f%02d.png -r 24 output22.mp4")
+if args[1] == "h" then system("ffmpeg -f image2 -i f%02d.png -r 24 output23.mp4")
+if args[1] == "i" then system("ffmpeg -f image2 -i f%02d.png -r 24 output24.mp4")
+if args[1] == "j" then system("ffmpeg -f image2 -i f%02d.png -r 24 output25.mp4")
+
+# # # # # # #  
+ 
+#key w/24 fps force out?
+#is black 000000? white FFFFFF?
+
+if args[1] == "x" then system("ffmpeg -i k01.png -i a.mp4 -filter_complex \"[1:v]colorkey=0x000000:0.3:0.2[ckout];[0:v][ckout]overlay[out]\" -map \"[out]\" -r 24 output.mp4")
+
+# # # # # # #
+
+#convolution="1 1 1 1 1 1 1 1 1:1 1 1 1 1 1 1 1 1:1 1 1 1 1 1 1 1 1:1 1 1 1 1 1 1 1 1:1/9:1/9:1/9:1/9"
+ 
+#convolution w/24 fps force out? see other convolves
+
+if args[1] == "c" then system("ffmpeg -i a.mp4 -filter convolution=\"1 1 1 1 1 1 1 1 1:1 1 1 1 1 1 1 1 1:1 1 1 1 1 1 1 1 1:1 1 1 1 1 1 1 1 1:1/9:1/9:1/9:1/9\" -r 24 output.mp4")
+
+# # # # # # # 
+
+else if args[1] == "m" then helpmsg()
+    
+end
+
+procedure helpmsg()
+write("Menu:")
+write("")
+write("Image sequences for ffxx:") 
+write("[a=image seq to output1.mp4 (ffxx frames)]")
+write("[b=image seq to output2.mp4 (ffxx frames)]") 
+write("[c=image seq to output3.mp4 (ffxx frames)]") 
+write("[d=image seq to output4.mp4 (ffxx frames)]") 
+write("[e=image seq to output5.mp4 (ffxx frames)]") 
+write("Image sequences for fxx:") 
+write("[f=image seq to output21.mp4 (fxx frames)]")
+write("[g=image seq to output22.mp4 (fxx frames)]")
+write("[h=image seq to output23.mp4 (fxx frames)]")
+write("[i=image seq to output24.mp4 (fxx frames)]")
+write("[j=image seq to output25.mp4 (fxx frames)]")
+write("")
+write("[x=key black a.mp4 over k01.png]")
+write("")
+write("[c=add blur to a.mp4]")
+write("") 
+write("[m Menu (derp)]")
+write("")
+write("mo to come")
+write("")
+   return
+end
+
+#########################################################
+
+#t := system("ffmpeg -i in.mp4 -metadata title=\"oqo\" out.flv")
+
+#t := system("ffmpeg -i ff16.png -i in.mp4 -filter_complex \"[1:v]colorkey=0xFFFFFF:0.3:0.2[ckout];[0:v][ckout]overlay[out]\" -map \"[out]\" output.mpg")
+
+#system("cd C:\icon\BU\ffmpeg\bin")
+
+#system("ffmpeg -i in.mp4 -metadata title="||qq||" out.flv")#INPUT WORKS
+#return
+
+
+##############################################
+##############################################
+##############################################
+##############################################
+
+#procedure main() #(args)
+
+#qq := args[1]
+
+#system("cd C:\icon\BU\ffmpeg\bin")
+
+#system("ffmpeg -i in.mp4 -metadata title=\"woof\" out.flv")
+
+#system("ffmpeg -i in.mp4 -metadata title="||qq||" out.flv")#INPUT WORKS
+
+#system("ffmpeg -f image2 -i img%d.jpg /tmp/a.mpg")
+
+#system("ffmpeg -f image2 -i ff%02d.png a.mpg") #WORKS
+
+#end
+
+#if args[1] == "c" then system("ffmpeg -i a.mp4 -filter convolution=\"-2 -1 0 -1 1 1 0 1 2:-2 -1 0 -1 1 1 0 1 2:-2 -1 0 -1 1 1 0 1 2:-2 -1 0 -1 1 1 0 1 2\" -r 24 output.mp4")
+
+#16:9 aspect ratio resolutions: 1024×576, 1152×648, 1280×720 (HD), 1366×768, 1600×900, 1920×1080 (FHD), 2560×1440 (QHD), 3840×2160 (4K), and 7680 x 4320 (8K).
+
+#For creating a video from many images:
+
+#ffmpeg -f image2 -framerate 12 -i foo-%03d.jpeg -s WxH foo.avi
+
+#To force the frame rate of the output file to 24 fps:
+#ffmpeg -i input.avi -r 24 output.avi
+
+#39.24 colorkey
+#RGB colorspace color keying.
+
+#The filter accepts the following options:
+
+#‘color’
+#The color which will be replaced with transparency.
+
+#‘similarity’
+#Similarity percentage with the key color.
+
+#0.01 matches only the exact key color, while 1.0 matches #everything.
+
+#‘blend’
+#Blend percentage.
+
+#0.0 makes pixels either fully transparent, or not transparent #at all.
+
+#Higher values result in semi-transparent pixels, with a higher #transparency the more similar the pixels color is to the key #color.
+
+#39.24.1 Examples
+#Make every green pixel in the input image transparent:
+#ffmpeg -i input.png -vf colorkey=green out.png
+#Overlay a greenscreen-video on top of a static background image.
+#ffmpeg -i background.png -i video.mp4 -filter_complex "[1:v]colorkey=0x3BBD1E:0.3:0.2[ckout];[0:v][ckout]overlay[out]" -map "[out]" output.flv
+
+#   #FFFFFF  is black
+
+
+#39.29 convolution
+#Apply convolution of 3x3, 5x5, 7x7 or horizontal/vertical up to #49 elements.
+
+#The filter accepts the following options:
+
+#‘0m’
+#‘1m’
+#‘2m’
+#‘3m’
+#Set matrix for each plane. Matrix is sequence of 9, 25 or 49 #signed integers in square mode, and from 1 to 49 odd number of #signed integers in row mode.
+
+#‘0rdiv’
+#‘1rdiv’
+#‘2rdiv’
+#‘3rdiv’
+#Set multiplier for calculated value for each plane. If unset or #0, it will be sum of all matrix elements.
+
+#‘0bias’
+#‘1bias’
+#‘2bias’
+#‘3bias’
+#Set bias for each plane. This value is added to the result of #the multiplication. Useful for making the overall image #brighter or darker. Default is 0.0.
+
+#‘0mode’
+#‘1mode’
+#‘2mode’
+#‘3mode’
+#Set matrix mode for each plane. Can be square, row or column. #Default is square.
+
+#39.29.1 Examples
+#Apply sharpen:
+#convolution="0 -1 0 -1 5 -1 0 -1 0:0 -1 0 -1 5 -1 0 -1 0:0 -1 0 -1 5 -1 0 -1 0:0 -1 0 -1 5 -1 0 -1 0"
+#Apply blur:
+#convolution="1 1 1 1 1 1 1 1 1:1 1 1 1 1 1 1 1 1:1 1 1 1 1 1 1 1 1:1 1 1 1 1 1 1 1 1:1/9:1/9:1/9:1/9"
+#Apply edge enhance:
+#convolution="0 0 0 -1 1 0 0 0 0:0 0 0 -1 1 0 0 0 0:0 0 0 -1 1 0 0 0 0:0 0 0 -1 1 0 0 0 0:5:1:1:1:0:128:128:128"
+#Apply edge detect:
+#convolution="0 1 0 1 -4 1 0 1 0:0 1 0 1 -4 1 0 1 0:0 1 0 1 -4 1 0 1 0:0 1 0 1 -4 1 0 1 0:5:5:5:1:0:128:128:128"
+#Apply laplacian edge detector which includes diagonals:
+#convolution="1 1 1 1 -8 1 1 1 1:1 1 1 1 -8 1 1 1 1:1 1 1 1 -8 1 1 1 1:1 1 1 1 -8 1 1 1 1:5:5:5:1:0:128:128:0"
+#Apply emboss:
+#convolution="-2 -1 0 -1 1 1 0 1 2:-2 -1 0 -1 1 1 0 1 2:-2 -1 0 -1 1 1 0 1 2:-2 -1 0 -1 1 1 0 1 2"
+
+
+#‘-vframes number (output)’
+#Set the number of video frames to output. This is an obsolete alias for -frames:v, which you should use instead.
+
+#‘-r[:stream_specifier] fps (input/output,per-stream)’
+#Set frame rate (Hz value, fraction or abbreviation).
+
+#As an input option, ignore any timestamps stored in the file and instead generate timestamps assuming constant frame rate fps. This is not the same as the ‘-framerate’ option used for some input formats like image2 or v4l2 (it used to be the same in older versions of FFmpeg). If in doubt use ‘-framerate’ instead of the input option ‘-r’.
+
+#As an output option, duplicate or drop input frames to achieve constant output frame rate fps.
+
+#‘-s[:stream_specifier] size (input/output,per-stream)’
+#Set frame size.
+
+#As an input option, this is a shortcut for the ‘video_size’ private option, recognized by some demuxers for which the frame size is either not stored in the file or is configurable – e.g. raw video or video grabbers.
+
+#As an output option, this inserts the scale video filter to the end of the corresponding filtergraph. Please use the scale filter directly to insert it at the beginning or some other place.
+
+#The format is ‘wxh’ (default - same as source).
+
+#‘-aspect[:stream_specifier] aspect (output,per-stream)’
+#Set the video display aspect ratio specified by aspect.
+
+#aspect can be a floating point number string, or a string of the form num:den, where num and den are the numerator and denominator of the aspect ratio. For example "4:3", "16:9", "1.3333", and "1.7777" are valid argument values.
+
+#If used together with ‘-vcodec copy’, it will affect the aspect ratio stored at container level, but not the aspect ratio stored in encoded frames, if it exists.
+
+#‘-vn (input/output)’
+#As an input option, blocks all video streams of a file from being filtered or being automatically selected or mapped for any output. See -discard option to disable streams individually.
+
+#As an output option, disables video recording i.e. automatic selection or mapping of any video stream. For full manual control see the -map option.
+
+#‘-vcodec codec (output)’
+#Set the video codec. This is an alias for -codec:v.
+
+#‘-pass[:stream_specifier] n (output,per-stream)’
+#Select the pass number (1 or 2). It is used to do two-pass video encoding. The statistics of the video are recorded in the first pass into a log file (see also the option -passlogfile), and in the second pass that log file is used to generate the video at the exact requested bitrate. On pass 1, you may just deactivate audio and set output to null, examples for Windows and Unix:
+
+#ffmpeg -i foo.mov -c:v libxvid -pass 1 -an -f rawvideo -y NUL
+#ffmpeg -i foo.mov -c:v libxvid -pass 1 -an -f rawvideo -y /dev/null
+#‘-passlogfile[:stream_specifier] prefix (output,per-stream)’
+#Set two-pass log file name prefix to prefix, the default file name prefix is “ffmpeg2pass”. The complete file name will be ‘PREFIX-N.log’, where N is a number specific to the output stream
+
+#‘-vf filtergraph (output)’
+#Create the filtergraph specified by filtergraph and use it to filter the stream.
+
+#This is an alias for -filter:v, see the -filter option.
+
+

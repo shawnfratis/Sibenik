@@ -1,0 +1,414 @@
+#fg3d 2020 FratisGraphics
+
+#Program to utilize Unicons 3D capabilities.
+
+#Some of this code is from the University of Arizona and Rosetta Code. Please contact me if you would like specifics of this.
+#shawnfratis@gmail.com
+
+#Integrated with Jafar Al-Gharaibeh's Unicon 3D viewer.
+
+#Made in Unicon, with Unicon IDE
+#unicon.sourceforge.net
+
+#################################################
+
+link lists
+link printf
+link strings
+
+procedure main81x(aa)
+
+out := open("input.txt","w")
+	every l := !aa do {
+		write(out,l)
+}
+return()
+end
+
+#############################################
+
+procedure main8()
+removelines8("input.txt")
+end
+ 
+procedure removelines8(fn)
+
+   f := open(fn,"r") | read(f)                  
+   every put(F := [],|read(f))
+
+hstck := F
+
+every ndle := !["%"] do {                                         
+ 
+   if i := lindex(hstck,ndle) then {                                           
+      write("item =",ndle, " is at position ",i," in list.")                
+           }
+         }
+    main28(i)
+   end
+
+procedure last(p,arglist)               
+local i
+every i := p!arglist
+return \i
+end  
+
+procedure lindex(lst, x)		
+   local i
+    every i := 1 to *lst do
+      if lst[i] === x then suspend i
+ 
+end 
+
+#########################################################
+
+procedure main28(i) 
+   removelines228("input.txt",1,i) | stop("Failed to remove lines.")
+   main38()
+end
+ 
+procedure removelines228(fn,start,skip)
+ 
+   f := open(fn,"r") | fail                  
+   out := open("output.txt","w") | stop("Unable to open ",out)
+
+   every put(F := [],|read(f))               
+   close(f)
+ 
+   if *F < start-1+skip then fail
+   every F[start - 1 + (1 to skip)] := &null 
+ 
+   f := open(fn,"rw") | fail                  
+   every write(\!F)
+   every write(out,\!F)             
+   close(out)
+   return 
+  end
+
+#########################################################
+
+  procedure main38() 
+   removelines338("output.txt",0,0) | stop("Failed to remove lines.")
+   return
+end
+ 
+procedure removelines338(fn,start,skip)
+ 
+   f := open(fn,"r") | fail                  
+   every put(F := [],|read(f))               
+   
+   if *F < start-1+skip then fail
+   every F[start - 1 + (1 to skip)] := &null 
+    
+   ff := open(fn,"w") | fail                  
+   every write(\!F)                         
+        
+out1 := open("output.txt","w")
+
+D001 := pretrim(F[12],"N12G00")
+D002 := pretrim(F[14],"N14G00")
+D003 := pretrim(F[16],"N16G00")
+D004 := pretrim(F[18],"N18G00")
+D005 := pretrim(F[20],"N20G00")
+D006 := pretrim(F[22],"N22G00")
+D007 := pretrim(F[24],"N24G00")
+D008 := pretrim(F[26],"N26G00")
+D009 := pretrim(F[28],"N28G00")
+D010 := pretrim(F[30],"N30G00")
+
+D011 := pretrim(F[32],"N32G00")
+D012 := pretrim(F[34],"N34G00")
+D013 := pretrim(F[36],"N36G00")
+D014 := pretrim(F[38],"N38G00")
+D015 := pretrim(F[40],"N40G00")
+D016 := pretrim(F[42],"N42G00")
+D017 := pretrim(F[44],"N44G00")
+D018 := pretrim(F[46],"N46G00")
+D019 := pretrim(F[48],"N48G00")
+D020 := pretrim(F[50],"N50G00")
+
+D021 := pretrim(F[52],"N52G00")
+D022 := pretrim(F[54],"N54G00")
+D023 := pretrim(F[56],"N56G00")
+D024 := pretrim(F[58],"N58G00")
+D025 := pretrim(F[60],"N60G00")
+D026 := pretrim(F[62],"N62G00")
+D027 := pretrim(F[64],"N64G00")
+D028 := pretrim(F[66],"N66G00")
+D029 := pretrim(F[68],"N68G00")
+D030 := pretrim(F[70],"N70G00")
+
+D031 := pretrim(F[72],"N72G00")
+D032 := pretrim(F[74],"N74G00")
+D033 := pretrim(F[76],"N76G00")
+D034 := pretrim(F[78],"N78G00")
+D035 := pretrim(F[80],"N80G00")
+D036 := pretrim(F[82],"N82G00")
+D037 := pretrim(F[84],"N84G00")
+D038 := pretrim(F[86],"N86G00")
+D039 := pretrim(F[88],"N88G00")
+D040 := pretrim(F[90],"N90G00")
+
+write(out1,"BD")
+write(out1,"SET_INCH")
+write(out1,"C")
+write(out1,"BEGIN_EINRICHTEPLAN_INFO")
+write(out1,"C")
+write(out1,"ZA,MM,2")
+write(out1,"MM,AT,1, 60,1,1,,,,,T")
+write(out1,"MM,AT,1,170,1,1,,,,,T")
+write(out1,"ZA,DA,1")
+write(out1,"C")
+write(out1,"DA,01000,1")
+write(out1,"C")
+write(out1,"ENDE_EINRICHTEPLAN_INFO")
+write(out1,"C")
+write(out1,"BEGIN_SHEET_TECH")
+write(out1,"C")
+write(out1,"ZA,MM,6")
+write(out1,"MM,AT,1, 10,1,1,,,,,T")
+write(out1,"MM,AT,1, 20,1,1,,,,'in',Z")
+write(out1,"MM,AT,1, 30,1,1,,,,'in',Z")
+write(out1,"MM,AT,1, 40,1,1,,,,'in',Z")
+write(out1,"MM,AT,1,220,1,1,,,,'in',Z")
+write(out1,"MM,AT,1,230,1,1,,,,'in',Z")
+write(out1,"C")
+write(out1,"ZA,DA,1")
+write(out1,"DA,'SHT-1',96.000,48.000,0.048,96.000,48.000")
+write(out1,"C")
+write(out1,"ENDE_SHEET_TECH")
+write(out1,"C")
+write(out1,"BEGIN_SHEET_LOAD")
+write(out1,"C")
+write(out1,"ZA,MM,10")
+write(out1,"MM,AT,1, 10,1,1,,,,,T")
+write(out1,"MM,AT,1,500,1,1,,,,,Z")
+write(out1,"MM,AT,1,620,1,1,,,,,Z")
+write(out1,"MM,AT,1,630,1,1,,,,,Z")
+write(out1,"MM,AT,1,640,1,1,,,,'in',Z")
+write(out1,"MM,AT,1,650,1,1,,,,'in',Z")
+write(out1,"MM,AT,1,660,1,1,,,,'Bool',Z")
+write(out1,"MM,AT,1,690,1,1,,,,,Z")
+write(out1,"MM,AT,1,700,1,1,,,,,Z")
+write(out1,"MM,AT,1,710,1,1,,,,,Z")
+write(out1,"C")
+write(out1,"ZA,DA,1")
+write(out1,"DA,'SHL-1',1,1,0,2.0,2.0,1,1,1,1")
+write(out1,"C")
+write(out1,"ENDE_SHEET_LOAD")
+write(out1,"C")
+write(out1,"BEGIN_LTT_CALLS")
+write(out1,"C")
+write(out1,"ZA,MM,1")
+write(out1,"MM,AT,1, 10,1,1,,,,,T")
+write(out1,"C")
+write(out1,"ZA,DA,1")
+write(out1,"DA,'21425'")
+write(out1,"C")
+write(out1,"ENDE_LTT_CALLS")
+write(out1,"C")
+write(out1,"BEGIN_PROGRAMM")
+write(out1,"C")
+write(out1,"ZA,MM,4")
+write(out1,"MM,AT,1, 10,1,1,,,,,T")
+write(out1,"MM,AT,1, 20,1,1,,,,,T")
+write(out1,"MM,AT,1, 30,1,1,,,,,T")
+write(out1,"MM,AT,1, 40,1,1,,,,,Z")
+write(out1,"C")
+write(out1,"ZA,DA,2")
+write(out1,"DA,'LC104113','UP',,")
+write(out1,"START_TEXT")
+write(out1,"N10; (4113)")
+write(out1,"N20 MSG(\"SUB-PROGRAM NO., P1004113\")")
+write(out1,"N30 G90")
+write(out1,"N40")
+write(out1,"N50 G01 ",D001|0)
+write(out1,"N60TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N70 G03 I-0.0150")
+write(out1,"N80TC_LASER_OFF(3)")
+write(out1,"N90 G01 ",D002|0)
+write(out1,"N100TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N110 G03 I-0.0150")
+write(out1,"N120TC_LASER_OFF(3)")
+write(out1,"N130 G01 ",D003|0)
+write(out1,"N140TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N150 G03 I-0.0150")
+write(out1,"N160TC_LASER_OFF(3)")
+write(out1,"N170 G01 ",D004|0)
+write(out1,"N180TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N190 G03 I-0.0150")
+write(out1,"N200TC_LASER_OFF(3)")
+write(out1,"N210 G01 ",D005|0)
+write(out1,"N220TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N230 G03 I-0.0150")
+write(out1,"N240TC_LASER_OFF(3)")
+write(out1,"N250 G01 ",D006|0)
+write(out1,"N260TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N270 G03 I-0.0150")
+write(out1,"N280TC_LASER_OFF(3)")
+write(out1,"N290 G01 ",D007|0)
+write(out1,"N300TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N310 G03 I-0.0150")
+write(out1,"N320TC_LASER_OFF(3)")
+write(out1,"N330 G01 ",D008|0)
+write(out1,"N340TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N350 G03 I-0.0150")
+write(out1,"N360TC_LASER_OFF(3)")
+write(out1,"N370 G01 ",D009|0)
+write(out1,"N380TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N390 G03 I-0.0150")
+write(out1,"N400TC_LASER_OFF(3)")
+write(out1,"N410 G01 ",D010|0)
+write(out1,"N420TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N430 G03 I-0.0150")
+write(out1,"N440TC_LASER_OFF(3)")
+write(out1,"N450 G01 ",D011|0)##################################
+write(out1,"N460TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N470 G03 I-0.0150")
+write(out1,"N480TC_LASER_OFF(3)")
+write(out1,"N490 G01 ",D012|0)##################################
+write(out1,"N500TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N510 G03 I-0.0150")
+write(out1,"N520TC_LASER_OFF(3)")
+write(out1,"N530 G01 ",D013|0)##################################
+write(out1,"N540TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N550 G03 I-0.0150")
+write(out1,"N560TC_LASER_OFF(3)")
+write(out1,"N570 G01 ",D014|0)##################################
+write(out1,"N580TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N590 G03 I-0.0150")
+write(out1,"N600TC_LASER_OFF(3)")
+write(out1,"N610 G01 ",D015|0)##################################
+write(out1,"N620TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N630 G03 I-0.0150")
+write(out1,"N640TC_LASER_OFF(3)")
+write(out1,"N650 G01 ",D016|0)##################################
+write(out1,"N660TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N670 G03 I-0.0150")
+write(out1,"N680TC_LASER_OFF(3)")
+write(out1,"N690 G01 ",D017|0)##################################
+write(out1,"N700TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N710 G03 I-0.0150")
+write(out1,"N720TC_LASER_OFF(3)")
+write(out1,"N730 G01 ",D018|0)##################################
+write(out1,"N740TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N750 G03 I-0.0150")
+write(out1,"N760TC_LASER_OFF(3)")
+write(out1,"N770 G01 ",D019|0)##################################
+write(out1,"N780TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N790 G03 I-0.0150")
+write(out1,"N800TC_LASER_OFF(3)")
+write(out1,"N810 G01 ",D020|0)##################################
+write(out1,"N820TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N830 G03 I-0.0150")
+write(out1,"N840TC_LASER_OFF(3)")
+write(out1,"N850 G01 ",D021|0)##################################
+write(out1,"N860TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N870 G03 I-0.0150")
+write(out1,"N880TC_LASER_OFF(3)")
+write(out1,"N890 G01 ",D022|0)##################################
+write(out1,"N900TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N910 G03 I-0.0150")
+write(out1,"N920TC_LASER_OFF(3)")
+write(out1,"N930 G01 ",D023|0)##############
+write(out1,"N940TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N950 G03 I-0.0150")
+write(out1,"N960TC_LASER_OFF(3)")
+write(out1,"N970 G01 ",D024|0)##############
+write(out1,"N980TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N990 G03 I-0.0150")
+write(out1,"N1000TC_LASER_OFF(3)")
+write(out1,"N1010 G01 ",D025|0)##############
+write(out1,"N1020TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N1030 G03 I-0.0150")
+write(out1,"N1040TC_LASER_OFF(3)")
+write(out1,"N1050 G01 ",D026|0)##############
+write(out1,"N1060TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N1070 G03 I-0.0150")
+write(out1,"N1080TC_LASER_OFF(3)")
+write(out1,"N1090 G01 ",D027|0)##############
+write(out1,"N1100TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N1110 G03 I-0.0150")
+write(out1,"N1120TC_LASER_OFF(3)")
+write(out1,"N1130 G01 ",D028|0)##############
+write(out1,"N1140TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N1150 G03 I-0.0150")
+write(out1,"N1160TC_LASER_OFF(3)")
+write(out1,"N1170 G01 ",D029|0)##############
+write(out1,"N1180TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N1190 G03 I-0.0150")
+write(out1,"N1200TC_LASER_OFF(3)")
+write(out1,"N1210 G01 ",D030|0)##############
+write(out1,"N1220TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N1230 G03 I-0.0150")
+write(out1,"N1240TC_LASER_OFF(3)")
+write(out1,"N1250 G01 ",D031|0)##############
+write(out1,"N1260TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N1270 G03 I-0.0150")
+write(out1,"N1280TC_LASER_OFF(3)")
+write(out1,"N1290 G01 ",D032|0)##############
+write(out1,"N1300TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N1310 G03 I-0.0150")
+write(out1,"N1320TC_LASER_OFF(3)")
+write(out1,"N1330 G01 ",D033|0)##############
+write(out1,"N1340TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N1350 G03 I-0.0150")
+write(out1,"N1360TC_LASER_OFF(3)")
+write(out1,"N1370 G01 ",D034|0)##############
+write(out1,"N1380TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N1390 G03 I-0.0150")
+write(out1,"N1400TC_LASER_OFF(3)")
+write(out1,"N1410 G01 ",D035|0)##############
+write(out1,"N1420TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N1430 G03 I-0.0150")
+write(out1,"N1440TC_LASER_OFF(3)")
+write(out1,"N1450 G01 ",D036|0)##############
+write(out1,"N1460TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N1470 G03 I-0.0150")
+write(out1,"N1480TC_LASER_OFF(3)")
+write(out1,"N1490 G01 ",D037|0)##############
+write(out1,"N1500TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N1510 G03 I-0.0150")
+write(out1,"N1520TC_LASER_OFF(3)")
+write(out1,"N1530 G01 ",D038|0)##############
+write(out1,"N1540TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N1550 G03 I-0.0150")
+write(out1,"N1560TC_LASER_OFF(3)")
+write(out1,"N1570 G01 ",D039|0)##############
+write(out1,"N1580TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N1590 G03 I-0.0150")
+write(out1,"N1600TC_LASER_OFF(3)")
+write(out1,"N1610 G01 ",D040|0)##############
+write(out1,"N1620TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N1630 G03 I-0.0150")
+write(out1,"N1640TC_LASER_OFF(3)")
+write(out1,"N1650 G01 ",D041|0)##############
+write(out1,"N1660TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N1670 G03 I-0.0150")
+write(out1,"N1680TC_LASER_OFF(3)")
+write(out1,"N1690 G01 ",D042|0)##############
+write(out1,"N1700TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N1710 G03 I-0.0150")
+write(out1,"N1720TC_LASER_OFF(3)")
+write(out1,"N1730 G01 ",D043|0)##############
+write(out1,"N1740TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N1750 G03 I-0.0150")
+write(out1,"N1760TC_LASER_OFF(3)")
+write(out1,"N1770 G01 ",D044|0)##############
+write(out1,"N1780TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N1790 G03 I-0.0150")
+write(out1,"N1800TC_LASER_OFF(3)")
+write(out1,"N1810 G01 ",D045|0)##############
+write(out1,"N1820TC_LASER_ON(11,\"21425\",0,500)")
+write(out1,"N1830 G03 I-0.0150")
+write(out1,"N1840TC_LASER_OFF(3)")
+
+return
+
+end
+
+##################################
+###################################
+################################
+
+    
