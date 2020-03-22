@@ -1,9 +1,34 @@
 fg3d 2020 - code name: Sibenik
 Shawn L. Fratis - shawnfratis@gmail.com
 
-This is the most up-to-date (2/17/2020) version of my 2d/3d graphics package that I've been working on for 1 million years or so. It is an ongoing project. I am currently using this software in a film project so I am getting "real-world" results, as well as getting new ideas. Please visit Fratisgraphics on Facebook to see my most recent samples. 
+This is the most up-to-date (3/22/2020) version of my 2d/3d graphics package that I've been working on for 1 million years or so. It is an ongoing project. I am currently using this software in a film project so I am getting "real-world" results, as well as getting new ideas. Please visit Fratisgraphics on Facebook to see my most recent samples. 
 
 Below are all my notes/ideas/to do lists. It is a mess but it's all there ;).
+
+#################################################################################
+
+REQD FILES IN PACKAGE:
+
+s.icn
+w.icn
+uw.icn
+8e1.icn
+in1.icn
+run.icn 
+frun.icn
+tpin.icn
+voxw.icn
+finedit.icn
+sdraw.icn
+dummy.icn
+TMPFILE.icn
+
+input.txt
+info.txt
+nav.x
+1 to 9.png
+g01.png
+s01.png
 
 #################################################################################
 
@@ -11,27 +36,136 @@ FG3D/SIBENIK-3D PROGRAM:
 
 ########################
 
+CODE INPUT-------
+
+Features-included:
+
+SPHERE INDIVIDUAL INPUT (10 SPHERES)
+
+CYLINDER X-X INDIVIDUAL INPUT (10 CYLS) fix z vals?
+
+CYLINDER Z-Z INDIVIDUAL INPUT (10 CYLS) fix z vals?
+
+PLANES INDIVIDUAL INPUT (10 PLNES)
+
+MESH INDIVIDUAL Y VERTICE INPUT (121 INPUTS)
+
+VOXEL GRID (X + Z AMOUNT INTPUT - 4 RAN Y INPUTS) need input to control tex, etc.
+
+SPHERE RAN ARRAY INPUT (10(?) INPUTS)
+
+CYLINDER X-X RAN ARRAY INPUT (10(?) INPUTS)
+
+CYLINDER Z-Z RAN ARRAY INPUT (10(?) INPUTS)
+
+PLANE RANDOM ARRAYS (6 OPTIONS) finish mountain, canyon etc
+
+PARTICLE GRIDS - RAN OR GRAD COLORS (FINISH INPUT METHODS-fix preprocessor $)
+
+Features-coming:
+
+MORE PARTICLE EFFECTS
+
+TORUS
+
+BASIC NON-TEXTURED OPENGL SHAPES ETC
+
+ANIMATION
+
+SEE BELOW FOR MORE WANTED 3D FEATURES ETC vvv
+
+**************************************************
+
+IMMEDIATE FIXES:FIX INPUT BOX, INPUT DELETE,
+
+************************************************** 
+
+#################################################################################
+
+SDRAW01-2D DRAW AND ANIMATION PROGRAM:
+
+#######################################
+
+more colors/grads/grad to black for draw prog--
+
+GRAD TO BLACK FOR BRUSHES
+
+im seq out from movie for ani and 3d prog input
+
+CLEAN UP - 3d brushes etc
+
+##########################################################################
+##########################################################################
+##########################################################################
+
+FRATISBASTARD-FFMPEG CONTROLLER:
+
+##################################
+
+odd frame add with multi frame seq render? FIX
+adjust blur?
+edit sequences together?
+
+ffmpeg
+FFMPEG - - for movie: use sys calls to control ffmpeg - test aspect etc w ffmpeg-probb fixed ---for ffmpeg test  - finish convolve+others [figure input path for filters--diff entries for png names etc] - render 48-frun i1 1.mp4- next 48-frun i2 2.mp4 etc.
+see INFo!!!!!!!!!!!!!!!!!!!!!!!!
+
+ffmpeg
+FFMPEG - -  - finish convolve+others [figure input path for filters--
+ffmpeg viewer command---see other filters, editing etc
+see INFo!!!!!!!!!!!!!!!!!!!!!!!!
+
+ffmpeg
+ffmpeg
+FFMPEG - - use sys calls to control ffmpeg - correct aspect ratios and frame rates -more features test
+
+viewer in ffmpeg - etc -filters - editing
+
+##########################################################################
+##########################################################################
+##########################################################################
+
+MORE WANTED 3D:
+
+use animal or other ai
+
+running kills text file - fix
+
+other primitives disk line poly point seg torus both tex and no tex
+
+unicon command for sudividing planes
+
+DrawPoint() x, y, and z coordinates of each point.
+
+single digit vals in interp????
+
 WORK ON INPUT - INTERPERETED? - STRIP COMMENTS - CODE IN BUTTON
 
 TERRAIN Y VAL INPUT METHOD(S) - CONNECT PLANES FOR BIGGER SURFACE
 
 TRIS?
 
-fix sphere inputs
-
-fix ui buttons!
+fix sphere inputs(DONE?)
 
 cylinders--make spacewalk with it
 
 finish voxels/math - -vox (directions , ran etc? , VOX PLANE) --see below
 
-use strip and interpereter?
+spheres etc animate one at a time like fire or glow effect
+
 system copy paste or sim?
+
 xyz grid for ref?
+
 MORE REPLICATING TOOLS!!!
+
 DISTRIBUTIONS
-CODE EDITOR-TEXT STRIP
+
 multiplier/random/distribute vox or ??
+
+strange attractors
+
+ipfs/git
 
 procedure main()
     local L
@@ -57,6 +191,8 @@ manifold:
 000
 000
 1
+
+tex w self illuminations like enterpeise
 
 INPUT TEXTURED PLANES - 4 POINTS. no limit for tex name ---DONE?
 
@@ -112,44 +248,8 @@ INTPUT EACH SHAPE - (AKA SPHERE FIRST ETC)
 
 some kind of algoritmic animation using icon stuff?
 
-non-tex stuff
-
-
-
-
 #################################################################################
 
-SDRAW01-2D DRAW AND ANIMATION PROGRAM:
-
-#######################################
-
-more colors/grads/grad to black for draw prog--
-
-im seq out from movie for ani and 3d prog input
-
-
-
-
-#################################################################################
-
-FRATISBASTARD-FFMPEG CONTROLLER:
-
-##################################
-
-ffmpeg
-FFMPEG - - for movie: use sys calls to control ffmpeg - test aspect etc w ffmpeg-probb fixed ---for ffmpeg test  - finish convolve+others [figure input path for filters--diff entries for png names etc] - render 48-frun i1 1.mp4- next 48-frun i2 2.mp4 etc.
-see INFo!!!!!!!!!!!!!!!!!!!!!!!!
-
-ffmpeg
-FFMPEG - -  - finish convolve+others [figure input path for filters--
-ffmpeg viewer command---see other filters, editing etc
-see INFo!!!!!!!!!!!!!!!!!!!!!!!!
-
-ffmpeg
-ffmpeg
-FFMPEG - - use sys calls to control ffmpeg - correct aspect ratios and frame rates -more features test
-
-viewer in ffmpeg - etc -filters - editing
 
 
 

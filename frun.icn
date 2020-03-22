@@ -1,5 +1,5 @@
 #Fratisbastard ffmpeg functioner thing
-#Experimental - interface for ffmpeg functions
+
 #ADD MORE USEFUL THINGS
 #ARGS ARE VARS TO DIFFERENT FUNCTIONS
 
@@ -44,7 +44,7 @@ if args[1] == "x" then system("ffmpeg -i k01.png -i a.mp4 -filter_complex \"[1:v
  
 #convolution w/24 fps force out? see other convolves
 
-if args[1] == "c" then system("ffmpeg -i a.mp4 -filter convolution=\"1 1 1 1 1 1 1 1 1:1 1 1 1 1 1 1 1 1:1 1 1 1 1 1 1 1 1:1 1 1 1 1 1 1 1 1:1/9:1/9:1/9:1/9\" -r 24 output.mp4")
+if args[1] == "z" then system("ffmpeg -i a.mp4 -filter convolution=\"1 1 1 1 1 1 1 1 1:1 1 1 1 1 1 1 1 1:1 1 1 1 1 1 1 1 1:1 1 1 1 1 1 1 1 1:1/9:1/9:1/9:1/9\" -r 24 output.mp4")
 
 # # # # # # # 
 
@@ -70,7 +70,7 @@ write("[j=image seq to output25.mp4 (fxx frames)]")
 write("")
 write("[x=key black a.mp4 over k01.png]")
 write("")
-write("[c=add blur to a.mp4]")
+write("[z=add blur to a.mp4]")
 write("") 
 write("[m Menu (derp)]")
 write("")
@@ -110,7 +110,10 @@ end
 
 #system("ffmpeg -f image2 -i ff%02d.png a.mpg") #WORKS
 
+
 #end
+
+
 
 #if args[1] == "c" then system("ffmpeg -i a.mp4 -filter convolution=\"-2 -1 0 -1 1 1 0 1 2:-2 -1 0 -1 1 1 0 1 2:-2 -1 0 -1 1 1 0 1 2:-2 -1 0 -1 1 1 0 1 2\" -r 24 output.mp4")
 
@@ -150,6 +153,8 @@ end
 #ffmpeg -i background.png -i video.mp4 -filter_complex "[1:v]colorkey=0x3BBD1E:0.3:0.2[ckout];[0:v][ckout]overlay[out]" -map "[out]" output.flv
 
 #   #FFFFFF  is black
+
+
 
 
 #39.29 convolution
