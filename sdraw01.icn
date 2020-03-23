@@ -1,8 +1,9 @@
-#sdraw01
+
+############################################################
 
 #Unicon-based drawing program-2020 Shawn L. Fratis
-
-#(shawnfratis@gmail.com
+ 
+#(shawnfratis@gmail.com)
 
 #Utilizes DynComps from Unicon library, and Clint Jeffery's
 #Etch-a-Sketch program
