@@ -5,6 +5,8 @@ This is the most up-to-date (3/22/2020) version of my 2d/3d graphics package tha
 
 Below are all my notes/ideas/to do lists. It is a mess but it's all there ;).
 
+#SEE BELOW FOR GEEK/NOTE STUFF
+
 #################################################################################
 
 REQD FILES IN PACKAGE:
@@ -19,7 +21,7 @@ frun.icn
 tpin.icn
 voxw.icn
 finedit.icn
-sdraw.icn
+sdraw01.icn
 dummy.icn
 TMPFILE.icn
 
@@ -35,6 +37,18 @@ s01.png
 FG3D/SIBENIK-3D PROGRAM:
 
 ########################
+
+FFMPEG SOUND ETC
+
+ICON IMG TO TEXT/GAMMA/GREGGS
+
+INPUT/AUTOMATIONS
+
+PROCEDURAL ANIMATIONS
+
+GIT UPDATES
+
+WAYLAND/VULKAN/UNICON PEEPS
 
 CODE INPUT-------
 
@@ -62,13 +76,15 @@ PLANE RANDOM ARRAYS (6 OPTIONS) finish mountain, canyon etc
 
 PARTICLE GRIDS - RAN OR GRAD COLORS (FINISH INPUT METHODS-fix preprocessor $)
 
-Features-coming:
+Features-coming:++++++++++++++++++++++++++++++++++++++++++
+
+AUTOMATION! (AI ETC)
 
 MORE PARTICLE EFFECTS
 
 TORUS
 
-BASIC NON-TEXTURED OPENGL SHAPES ETC
+BASIC NON-TEXTURED OPENGL SHAPES ETC - SEE OLD CODE, FRAMEWORK SHAPES ETC
 
 ANIMATION
 
@@ -77,6 +93,10 @@ SEE BELOW FOR MORE WANTED 3D FEATURES ETC vvv
 **************************************************
 
 IMMEDIATE FIXES:FIX INPUT BOX, INPUT DELETE,
+
+fix doc grids/particles
+
+fix decision tree
 
 ************************************************** 
 
@@ -93,6 +113,8 @@ GRAD TO BLACK FOR BRUSHES
 im seq out from movie for ani and 3d prog input
 
 CLEAN UP - 3d brushes etc
+
+FILTERS ETC FOR 2D ANIMATOR -- BLURS
 
 ##########################################################################
 ##########################################################################
@@ -126,6 +148,24 @@ viewer in ffmpeg - etc -filters - editing
 ##########################################################################
 
 MORE WANTED 3D:
+
+AI CYLINDERS ON HILLS-FIND HEIGHTS AND ADD---+ BRIDGES? etc? DECISION TREE/DECISION TABLE?
+RETURN RAN VALS
+IF XYZ VAL <NUM THEN PUT CYL AT XYZ VAL
+
+AI/MACINE LEARNING ETCCCCCCC.......
+
+SEQ-ALIEN PLANET DESTRUCTION
+
+FINISH SPACEWALK
+
+hack ide for inputter?
+
+SEE ALL COMMANDS IN MANUAL (IMAGE PLANES, ETC ETC)
+
+USE AS EDITOR?
+
+stuff from icon-gamma, algorithms, etc etc
 
 use animal or other ai
 
@@ -250,6 +290,15 @@ some kind of algoritmic animation using icon stuff?
 
 #################################################################################
 
+XTRA GEEK STUFF:
+
+IPFS MY IQ PROG
+IPFS..SITE..SERVER
+SGI SERVER - TELNET
+SC MOVIE
+SEE WRITTEN NOTES
+PUT ON IPFS/I ARCHIVE/PUT PREVIEW STUFF ON FB
+demo/ad on IPFS - host code???
 
 
 

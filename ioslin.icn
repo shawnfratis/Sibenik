@@ -1,0 +1,2797 @@
+#WIN OR LIN VERSION
+
+#TO DO
+
+#finish finedit--add stuff from tpin
+
+#IPFS HTML WRITER AND READER html convert - LINKS READER - IMAGE UPLOADER - USE W MY PROGS
+#ffmpeg movies + etc directly to ipfs viewer from progs
+#WORK ON PINNING-AUTO RELOAD ----MY OWN ID SYSTEM
+#ipfs read from hash from p file and.....
+
+#ADD  FFMPEG (W PARAMS) TO INTERP - EDITOR FOR FINEDIT/add top half to this? args for values? arg tables here! tables for vals,ai,distros etc
+#q for  input to 3d
+#ADD MORE STUFF-OPTIONS FOR NON GL 3D/RABBIT/web - ADD ESCAPE -see very bottom
+#FIX IMAGE VIEW
+#EXTERNAL SERVER? SGI? SGI VERSION
+#GAMES HR TRON BREAKOUT TTT
+#ANIMAL? AI?
+#MOVIE ON IPFS-INPARTS
+
+#FOR NOW, NEED DIRECT FOLDER LINKS:UNICON BIN, /home/shawn/is, /home/shawn/go-ipfs/p
+
+#################################################
+
+link wopen
+link xcompat
+link color
+link graphics
+link numbers
+link options
+link button
+link dsetup
+link evmux
+link ivalue 
+link usage
+link strings
+link cfunc
+link basename
+link lists
+link printf
+link random
+
+#start of terminal
+
+procedure main()
+
+WOpen("label=BONETERM", "size=1000,900","bg=black","linewidth=1","fg=green")
+
+main2()
+
+end
+
+procedure main2()
+
+        WAttrib("dx=1", "dy=1")
+
+        inst()
+  
+        repeat {
+
+w := Active() | stop("Active fails")
+
+################################
+
+#not presently used - can be modified to re-introduce mouse events.
+   
+       case e := Event(w) of {
+
+&lpress | &mpress | &rpress: {
+	      x1 := &x
+	      y1 := &y
+	      x2 := y2 := &null
+	  }
+
+################################
+
+#begin basic keyboard commands.
+
+"\z": {
+	 
+        WriteImage("screen.png")
+
+              }
+
+"\a": {
+	      Fg("red") #DO THESE EVEN WORK?
+              }
+"\s": {
+	      Fg("green")
+              }
+"\g": {
+	      Fg("orange")
+              }
+"\h": {
+	      Fg("blue")
+              }
+"\j": {
+	      Fg("purple")
+              }
+"\G": {
+	      Fg("yellow")
+              }
+"\H": {
+	      Fg("black")
+              }
+"\J": {
+	      Fg("white")
+              }
+"\?": {       
+              inst()      
+              }
+"\]": {       
+              EraseArea()
+              }
+"\@": {
+              exit()
+              }
+"\.": { 
+              Notice("~ is interp. ` is addnotes.")
+              }
+"\`": { 
+              inputpromptXXX()
+              }
+"\~": { 
+              inputpromptYYY()
+              }
+"\,": { 
+              interppguide()
+              }
+"\;": {      
+              inputprompt()
+              }
+"\\": {   
+              #finedit()   
+              inputpromptfedit()
+              }
+"\c": { 
+              clock()
+              }
+"\+": { 
+              threedguide()#make this
+              }
+"\>": { 
+              ffmpegguide()#make this
+              }
+    }
+  }
+
+WDone()
+
+end
+
+#####################################
+#####################################
+
+#guide land
+
+procedure inst()
+
+WAttrib("dx=1", "dy=1")
+
+Fg("red")
+
+WWrite("-------------------------")
+
+WWrite("|--LINUX VERSION--|")
+
+WWrite("-------------------------")
+
+
+Fg("blue")
+WWrite("Welcome to BONEWORLD")
+WWrite("")
+Fg("green")
+WWrite("Different text functions are:") 
+WWrite("")
+Fg("yellow")
+WWrite("For IPFS: runipfs, readhash, pagemake, ipfssite")
+WWrite("")
+WWrite("Key functions are:") 
+WWrite("")
+WWrite("z is write image. ] is erase everything. > is ffmpeg guide.") 
+WWrite("")
+WWrite("? brings these words back. c is clock. ~ is interp. ` is addnotes.")
+WWrite("") 
+WWrite("@ is quit. . for popup guide. , for interp guide. + for 3d guide. ")
+WWrite("")  
+WWrite("Press ; to input text")
+WWrite("")
+
+end
+
+procedure threedguide()
+Fg("red")  
+WWrite("3d guide")
+WWrite("")
+WWrite("positive values")
+WWrite("")
+WWrite("0  1  2  3  4  5  6  7  8  9  10  +x")
+WWrite("   |  |  |  |  |  |  |  |  |  |")
+WWrite("1- - - - - - - - - - - - - - - -")
+WWrite("   |  |  |  |  |  |  |  |  |  |")  
+WWrite("2- - - - - - - - - - - - - - - -")
+WWrite("   |  |  |  |  |  |  |  |  |  |")
+WWrite("3- - - - - - - - - - - - - - - -")
+WWrite("   |  |  |  |  |  |  |  |  |  |")
+WWrite("4- - - - - - - - - - - - - - - -")
+WWrite("   |  |  |  |  |  |  |  |  |  |")
+WWrite("5- - - - - - - - - - - - - - - -")
+WWrite("   |  |  |  |  |  |  |  |  |  |")
+WWrite("6- - - - - - - - - - - - - - - -")
+WWrite("   |  |  |  |  |  |  |  |  |  |")
+WWrite("7- - - - - - - - - - - - - - - -")
+WWrite("   |  |  |  |  |  |  |  |  |  |")
+WWrite("8- - - - - - - - - - - - - - - -")
+WWrite("   |  |  |  |  |  |  |  |  |  |")
+WWrite("9- - - - - - - - - - - - - - - -")
+WWrite("   |  |  |  |  |  |  |  |  |  |")
+WWrite("10- - - - - - - - - - - - - - -")
+WWrite("")
+WWrite("+z")
+end
+
+procedure ffmpegguide()
+Fg("yellow")
+WWrite("ffmpeg guide")
+WWrite("")
+WWrite("Image sequences for ffxx:") 
+WWrite("[a=image seq to output1.mp4 (ffxx frames)]")
+WWrite("[b=image seq to output2.mp4 (ffxx frames)]") 
+WWrite("[c=image seq to output3.mp4 (ffxx frames)]") 
+WWrite("[d=image seq to output4.mp4 (ffxx frames)]") 
+WWrite("[e=image seq to output5.mp4 (ffxx frames)]") 
+WWrite("Image sequences for fxx:") 
+WWrite("[f=image seq to output21.mp4 (fxx frames)]")
+WWrite("[g=image seq to output22.mp4 (fxx frames)]")
+WWrite("[h=image seq to output23.mp4 (fxx frames)]")
+WWrite("[i=image seq to output24.mp4 (fxx frames)]")
+WWrite("[j=image seq to output25.mp4 (fxx frames)]")
+WWrite("")
+WWrite("[x=key black a.mp4 over k01.png]")
+WWrite("")
+WWrite("[z=add blur to a.mp4]")
+WWrite("") 
+end
+
+procedure interppguide()
+Fg("yellow")
+WWrite("interpreter guide") 
+WWrite("")
+WWrite("h and h2 help")
+WWrite("")
+WWrite("(execute | e)") 
+WWrite("compile and run code")#check this
+WWrite("")
+WWrite("(executex | x)") 
+WWrite("run finedit and 3d")
+WWrite("")			
+WWrite("(executey | y)") 
+WWrite("run finedit")
+WWrite("")			
+WWrite("(executez | z)") 
+WWrite("run 3d")
+WWrite("")
+WWrite("(executeq | s)")
+WWrite("run Sdraw01")
+end
+
+#############################################################
+#############################################################
+
+procedure inputpromptXXX()
+ 
+        s1 := WRead()
+
+         mainnotes(s1)
+
+    return
+
+end
+
+################################################################
+
+procedure write_out_notes (filename)
+  file := open (filename, "rt") | stop ("no notes file yet")
+  every WWrite (!file)
+end
+ 
+procedure add_to_notes (filename, strs)
+  file := open (filename, "at")  | # append to file if it exists
+          open (filename, "cat") | # create the file if not there
+          stop ("unable to open " || filename)
+  WWrites (file, ctime(&now) || "\n\t")
+  every WWrites (file, !strs || " ")
+  WWrite (file, "")
+end
+ 
+procedure mainnotes(args)
+  notes_file := "notes.txt"
+  if *args = 0 
+    then write_out_notes (notes_file)
+    else add_to_notes (notes_file, args)
+   return()
+end
+
+#######################################################
+
+procedure clock()
+
+WAttrib("dx=1", "dy=1")
+
+        Fg("green")
+ 
+        WWrite("milliseconds of CPU time = ",&time)
+        WWrite("Time of day as hh:mm:ss (24-hour format) = ",&clock)
+        WWrite("current date in yyyy/mm/dd format = ",&date)
+        WWrite("timestamp with day of the week, date, and current time to the minute = ",&dateline)
+  
+end
+
+########################################################
+
+procedure textin01()
+
+        WAttrib("dx=1", "dy=1")
+
+        Fg("red")
+
+        WAttrib("dx=1", "dy=1")
+        WWrite("annotation:")
+        s := WRead()
+        WWrite("note:",image(s))
+
+end
+
+########################################################
+#open image
+
+procedure openImage()
+
+        ReadImage("fg01.png",1,1)
+        #imageview?
+
+end
+
+#########################################################
+#########################################################
+#########################################################
+
+#https://docs-beta.ipfs.io/how-to/pin-files/#three-kinds-of-pins
+
+#https://docs-beta.ipfs.io/how-to/store-play-videos/
+
+#https://docs-beta.ipfs.io/how-to/host-single-page-site/#create-your-site
+
+#IPFS ZONE
+
+procedure runipfs()
+system("x-terminal-emulator -e ipfs daemon")
+end
+
+procedure testcat()
+system("ipfs cat /ipfs/QmW2WQi7j6c7UgJTarActp7tDNikE4B2qXtFCfLPdsgaTQ/cat.jpg > cat.jpg")
+system("./imageview cat.jpg")
+end
+
+procedure readipfs()
+system("cd /home/shawn/go-ipfs")
+#brewster k
+#system("ipfs cat /ipfs/QmavE42xtK1VovJFVTVkCR5Jdf761QWtxmvak9Zx718TVr/ > /home/shawn/go-ipfs/p.txt")
+system("ipfs cat /ipfs/QmS4ustL54uo8FzR9455qaxZwuMiUhyvMcX9Ba8nUH4uVv/readme > /home/shawn/go-ipfs/p.txt")
+readback()
+end
+
+#to read hash from p
+procedure readhash()
+WWrite(readline2("/home/shawn/go-ipfs/p.txt",3)|"failed")
+end
+ 
+procedure readline2(f,n)                         # return n'th line of file f
+f := open(\f,"r") | fail                        # open file
+every  i := n & line := |read(f) \ n do i -:= 1  #  <== here
+close(f)
+if i = 0 then return line
+end
+
+procedure readback()
+f := open("/home/shawn/go-ipfs/p.txt","r") | stop("cannot open file ",fn)
+while line := read(f) do
+every WWrite(line) 
+#close(f)
+end
+
+procedure pagemake()
+       
+   WWrite("Enter header text")
+
+   s := WRead()
+
+   WWrite("Enter page text")
+
+   s2 := WRead()
+  
+   WWrite("Enter filenames (limit 10, if none enter blank)")
+  
+   S3 := WRead()
+   
+   S4 := WRead()
+   
+   S5 := WRead()
+   
+   S6 := WRead()
+   
+   S7 := WRead()
+   
+   S8 := WRead()
+   
+   S9 := WRead()
+   
+  S10 := WRead()
+   
+  S11 := WRead()
+ 
+  S12 := WRead()
+
+   out1 := open("/home/shawn/is/index.html","w")
+
+   write(out1,"<HTML><HEAD>")
+   write(out1,"<TITLE>",s,"</TITLE></HEAD>")
+   
+   write(out1,"<LEFT><B><FONT SIZE = +1>",s2,"</FONT>")
+   
+   write(out1,"<br>")
+   write(out1,"<BODY>")
+
+   every file := S3 do
+   write(out1,"<A HREF=\"", file, "\">", file, "</A><BR>")
+
+   
+   every file := S4 do
+   write(out1,"<A HREF=\"", file, "\">", file, "</A><BR>")
+
+   
+   every file := S5 do
+   write(out1,"<A HREF=\"", file, "\">", file, "</A><BR>")
+
+   
+   every file := S6 do
+   write(out1,"<A HREF=\"", file, "\">", file, "</A><BR>")
+
+   
+   every file := S7 do
+   write(out1,"<A HREF=\"", file, "\">", file, "</A><BR>")
+
+   
+   every file := S8 do
+   write(out1,"<A HREF=\"", file, "\">", file, "</A><BR>")
+
+   
+   every file := S9 do
+   write(out1,"<A HREF=\"", file, "\">", file, "</A><BR>")
+
+   
+   every file := S10 do
+   write(out1,"<A HREF=\"", file, "\">", file, "</A><BR>")
+
+   
+   every file := S11 do
+   write(out1,"<A HREF=\"", file, "\">", file, "</A><BR>")
+
+   
+   every file := S12 do
+   write(out1,"<A HREF=\"", file, "\">", file, "</A><BR>")
+
+
+   write(out1,"</BODY></HTML>")
+
+   
+   WWrite("All files entered")
+
+end
+
+procedure ipfssite() #textin01i()
+ 
+   #WWrite("Enter path for folder")
+   #s1 := WRead()
+   #might not need these
+   #system("cp index.html "||s1, "index.html")
+   #system("ls"||s1)
+   #system("img index.html")
+
+   #system("ipfs add -r "||s1," > /home/shawn/go-ipfs/p.txt") #change
+  system("ipfs add -r /home/shawn/is > /home/shawn/go-ipfs/p.txt") #change
+
+end
+
+
+procedure testipfs1()
+WWrite("Enter IPFS hash")
+s1 := WRead()
+system("links2 http://127.0.0.1:8080/ipfs/"||s1) #change
+end
+
+##### > /home/shawn/go-ipfs/p.txt
+
+procedure testipfs2i()
+WWrite
+end
+
+#########################################################
+########################################################################################
+
+procedure inputprompt()
+ 
+        s1 := WRead()
+
+        WAttrib("dx=1", "dy=1")
+
+        ss1 :=( "runipfs")
+        ss2 :=( "readhash")
+        ss3 :=( "pagemake")
+        ss4 :=( "ipfssite")
+        ss5 :=( "rabbit")
+        ss6 :=( "transit")
+        ss7 :=( "breakout")
+        ss8 :=( "gamma")
+        ss9 :=( "ipfs")
+        ss10 :=( "ipfscat")
+        ss11 :=( "tron")
+        ss12 :=( "links2")
+        ss13 :=( "kill")
+        ss14 :=( "gterm")
+        ss15 :=( "testhtml")
+        ss16 :=( "runipfs2")
+        ss17 :=( "ipfssitei")
+        ss18 :=( "readipfs")
+        ss19 :=( "testcat")
+        ss20 :=( "nws")
+        ss21 :=( "lwfz01")
+        ss22 :=( "lwfx01")
+        ss23 :=("draw")
+        ss24 :=( "textin01i")
+
+
+
+        if s1== ss1 then runipfs() 
+        else
+        if s1== ss2 then readhash()
+        else
+        if s1== ss3 then pagemake()
+        else
+        if s1== ss4 then ipfssite() 
+        else
+        if s1== ss5 then mainrabbit() 
+        else
+        if s1== ss6 then maintrans() 
+        else
+        if s1== ss7 then breakout() 
+        else
+        if s1== ss8 then gamma() 
+        else
+        if s1== ss9 then ipfs() 
+        else
+        if s1== ss10 then ipfscat() 
+        else
+        if s1== ss11 then tron() 
+        else
+        if s1== ss12 then links2() 
+        else
+        if s1== ss13 then kill1() 
+        else
+        if s1== ss14 then gterm() 
+        else
+        if s1== ss15 then testhtml() 
+        else
+        if s1== ss16 then runipfs() 
+        else
+        if s1== ss17 then ipfssitei()
+        else
+        if s1== ss18 then readipfs()
+        else
+        if s1== ss19 then testcat() 
+        else
+        if s1== ss20 then nws() 
+        else
+        if s1== ss21 then inputLwfz01() 
+        else
+        if s1== ss22 then inputLwfx01()
+        else
+        if s1== ss23 then inputdraw01()
+        else       
+        if s1== ss24 then textin01i() 
+ 
+
+    return
+
+end
+
+###############################################################
+
+procedure inputpromptYYY()
+ 
+        s1 := WRead()
+
+         mainint1(s1)
+
+    return
+
+end
+
+global	WHITE,	# the white space cset
+	MFLAG,	# the modified dog
+	PRTBL	# the program table
+
+procedure mainint1(arg)
+   local line, lno, pline
+
+#	define the needed cset
+	WHITE := ' \t\n\f'
+
+#	initialize the program table
+	PRTBL := table()
+
+#	initialize the modified flag
+	MFLAG := 0
+
+#	get all the input
+	WWrites("I> ")
+	while line := WRead() do {
+
+#		scan the input line
+		line ? {
+
+#			skip any initial white space
+			tab(many(WHITE))
+
+#			check for program lines (they have line numbers)
+			if lno := tab(many(&digits)) & tab(many(WHITE)) then {
+
+#				get the program line
+				pline := tab(0)
+
+#				store the line in the program table
+				PRTBL[numeric(lno)] := pline
+
+#				set the modified flag
+				MFLAG +:= 1
+			}
+
+#			read command
+			else if (tab(upto(WHITE)) | tab(0)) ==
+				("read" | "r") then {
+				readprog()
+
+#				clear the modified dog
+				MFLAG := 0
+			}
+
+#			write command
+			else if (tab(upto(WHITE)) | tab(0)) ==
+				("write" | "w") then {
+				writeprog()
+
+#				clear the modified flag
+				MFLAG := 0
+			}
+
+#			delete command
+			else if (tab(upto(WHITE)) | tab(0)) ==
+				("delete" | "d") then {
+				delprog()
+
+#				set the modified flag
+				MFLAG +:= 1
+			}
+
+#			sequence command
+			else if (tab(upto(WHITE)) | tab(0)) ==
+				("sequence" | "s") then {
+				seqprog()
+			}
+
+#			list command
+			else if (tab(upto(WHITE)) | tab(0)) ==
+				("list" | "l") then {
+				listprog()
+			}
+
+#######################################################################
+
+#			execute command
+			else if (tab(upto(WHITE)) | tab(0)) ==
+				("execute" | "e") then {
+				execprog()
+			}
+
+#			execute command 1
+			else if (tab(upto(WHITE)) | tab(0)) ==
+				("executex" | "x") then {
+				execprogx()
+			}
+
+#			execute command 2
+			else if (tab(upto(WHITE)) | tab(0)) ==
+				("executey" | "y") then {
+				execprogy()
+			}
+
+#			execute command 3
+			else if (tab(upto(WHITE)) | tab(0)) ==
+				("executez" | "z") then {
+				execprogz()
+			}
+#			execute command 4
+			else if (tab(upto(WHITE)) | tab(0)) ==
+				("executes" | "s") then {
+				execprogq()
+			}
+
+#######################################################################
+
+#			help command
+			else if (tab(upto(WHITE)) | tab(0)) ==
+				("help" | "h" | "?") then {
+				helpprog()
+			}
+
+#			help2 command
+			else if (tab(upto(WHITE)) | tab(0)) ==
+				("help2" | "h2" | "/") then {
+				helpprog2()
+			}
+
+
+#			quit command
+			else if (tab(upto(WHITE)) | tab(0)) ==
+				("quit" | "q") then {
+				quitprog()
+			}
+
+#			invalid syntax input
+			else {
+				WWrite("Syntax Error: ",line)
+				helpprog()
+			}
+		}
+		WWrites("I> ")
+	}
+
+return()
+
+end
+
+###############################################################
+		
+procedure execprog() #finish this!!!
+   local runargs, out, prog, line, command
+
+	static	tmpfile
+
+	initial tmpfile := "TMPFILE.icn"
+
+#	get any runtime arguments
+	runargs := tab(0)
+
+#	create the temporary Icon file
+	(out := open(tmpfile,"w")) |
+
+#	or mention the problem and fail
+	(WWrite("I can't open '",tmpfile,"' for writing") & fail)
+
+#	sort the program table
+	prog := sort(PRTBL)
+
+#	put the program in the file
+	every line := !prog do {
+		WWrite(out,line[2])
+	}
+	close(out)
+
+#	format the command to execute the program
+	#command := "gnome-terminal -e ./unicon " || runargs
+        #command := "icont -s " || tmpfile || " -x " || runargs
+
+#	add the command to remove the temporary file
+	
+         #command ||:= " ; rm -f " || tmpfile
+
+#	execute the command
+	#system(command)
+        system("./unicon "|| runargs)
+        #system("gnome-terminal -e ./unicon " || runargs)
+        #system("gnome-terminal -e ./ " || runargs)
+
+end
+
+procedure execprogx()
+   local runargs, out, prog, line, command
+
+	static	tmpfile
+
+	initial tmpfile := "TMPFILE.icn"
+
+#	get any runtime arguments
+	runargs := tab(0)
+
+#	create the temporary Icon file
+	(out := open(tmpfile,"w")) |
+
+#	or mention the problem and fail
+	(write("I can't open '",tmpfile,"' for writing") & fail)
+
+#	sort the program table
+	prog := sort(PRTBL)
+
+#	put the program in the file
+	every line := !prog do {
+		write(out,line[2])
+	}
+	close(out)
+
+#	format the command to execute the program
+
+#	execute the command
+	
+        system("./unicon finedit.icn")
+        system("./finedit")
+        system("./run")
+end
+
+procedure execprogy()
+   local runargs, out, prog, line, command
+
+	static	tmpfile
+
+	initial tmpfile := "TMPFILE.icn"
+
+#	get any runtime arguments
+	runargs := tab(0)
+
+#	create the temporary Icon file
+	(out := open(tmpfile,"w")) |
+
+#	or mention the problem and fail
+	(write("I can't open '",tmpfile,"' for writing") & fail)
+
+#	sort the program table
+	prog := sort(PRTBL)
+
+#	put the program in the file
+	every line := !prog do {
+		write(out,line[2])
+	}
+	close(out)
+
+#	format the command to execute the program
+
+#	execute the command
+        system("./unicon finedit.icn")
+        system("./finedit")
+end
+
+procedure execprogz()
+   local runargs, out, prog, line, command
+
+	static	tmpfile
+
+	initial tmpfile := "TMPFILE.icn"
+
+#	get any runtime arguments
+	runargs := tab(0)
+
+#	create the temporary Icon file
+	(out := open(tmpfile,"w")) |
+
+#	or mention the problem and fail
+	(write("I can't open '",tmpfile,"' for writing") & fail)
+
+#	sort the program table
+	prog := sort(PRTBL)
+
+#	put the program in the file
+	every line := !prog do {
+		write(out,line[2])
+	}
+	close(out)
+
+#	format the command to execute the program
+
+#	execute the command
+        
+        system("./run")
+      
+end
+
+procedure execprogs()
+   local runargs, out, prog, line, command
+
+	static	tmpfile
+
+	initial tmpfile := "TMPFILE.icn"
+
+#	get any runtime arguments
+	runargs := tab(0)
+
+#	create the temporary Icon file
+	(out := open(tmpfile,"w")) |
+
+#	or mention the problem and fail
+	(write("I can't open '",tmpfile,"' for writing") & fail)
+
+#	sort the program table
+	prog := sort(PRTBL)
+
+#	put the program in the file
+	every line := !prog do {
+		write(out,line[2])
+	}
+	close(out)
+
+#	format the command to execute the program
+
+#	execute the command
+        
+        system("./unicon sdraw01.icn")
+        system("./sdraw01")
+      
+end
+
+##################################################################
+
+procedure seqprog()
+   local begno, incno, prog, lno, l
+
+#	initialize the sequencing numbers
+	begno := incno := 10
+
+#	skip any white space
+	tab(many(WHITE))
+
+#	get an initial line number
+	begno := numeric(tab(many(&digits)))
+
+#	skip any white space
+	tab(many(WHITE))
+
+#	get a increment number
+	incno := numeric(tab(many(&digits)))
+
+#	sort the program table
+	prog := sort(PRTBL)
+
+#	reinitialize it
+	PRTBL := table()
+
+#	sequence the program lines starting with begno by incno
+	lno := begno
+	every l := !prog do {
+		PRTBL[lno] := l[2]
+		lno +:= incno
+	}
+
+end
+
+procedure readprog()
+   local readfile, response, in, lno, line
+
+#	get a possible command line file name
+	tab(many(WHITE))
+	readfile := tab(upto(WHITE) | 0)
+
+#	if there was no file with the command get one
+	if /readfile | *readfile = 0 then {
+		WWrites("Read file name: ")
+		readfile := WRead()
+	}
+
+#	make sure a modified file has been written
+	if MFLAG > 0 then {
+		WWrites("Write before reading over current program? ")
+		response := read()
+		if any('yY',response) then
+			writeprog()
+	}
+
+#	initialize the program table
+	PRTBL := table()
+
+#	read the program from the read file
+	in := open(readfile,"r")
+	lno := 10
+	every line := !in do {
+		PRTBL[lno] := line
+		lno +:= 10
+	}
+	close(in)
+
+#	tell them what you did
+	WWrite("Read '",readfile,"'...",*PRTBL," lines")
+
+end
+
+procedure writeprog()
+   local writefile, prog, out, l
+
+#	get a possible command line file name
+	tab(many(WHITE))
+	writefile := tab(upto(WHITE) | 0)
+
+#	if there was no file with the command get one
+	if /writefile | *writefile = 0 then {
+		WWrites("Write file name: ")
+		writefile := WRead()
+	}
+
+#	sort the program table
+	prog := sort(PRTBL)
+
+#	write the program to the write file
+	out := open(writefile,"w")
+	every l := !prog do {
+		WWrite(out,l[2])
+	}
+	close(out)
+
+#	tell them what you did
+	WWrite("Write '",writefile,"'...",*PRTBL," lines")
+
+end
+
+procedure delprog()
+   local begno, endno, prog, l, lno
+
+#	initialize the line numbers
+	begno := 0
+	endno := 99999
+
+#	skip any white space
+	tab(many(WHITE))
+
+#	get an initial line number
+	begno := endno := numeric(tab(many(&digits)))
+
+#	skip any white space
+	tab(many(WHITE))
+
+#	get a final line number
+	endno := numeric(tab(many(&digits)))
+
+#	sort the program table
+	prog := sort(PRTBL)
+
+#	reinitialize it
+	PRTBL := table()
+
+#	delete the program lines between the optional numbers
+	every l := !prog do {
+		lno := numeric(l[1])
+		if (lno < begno) | (lno > endno) then PRTBL[lno] := l[2]
+	}
+
+end
+
+procedure listprog()
+   local begno, endno, prog, l, lno
+
+#	initialize the line numbers
+	begno := 0
+	endno := 99999
+
+#	skip any white space
+	tab(many(WHITE))
+
+#	get an initial line number
+	begno := endno := numeric(tab(many(&digits)))
+
+#	skip any white space
+	tab(many(WHITE))
+
+#	get a final line number
+	endno := numeric(tab(many(&digits)))
+
+#	sort the program table
+	prog := sort(PRTBL)
+
+#	list the program lines between the optional numbers
+	every l := !prog do {
+		lno := numeric(l[1])
+		if (lno >= begno) & (lno <= endno) then
+			WWrite(right(lno,5),": ",l[2])
+		if lno > endno then break
+	}
+
+end
+
+procedure helpprog()
+
+	static helpmsg
+
+#	define the help message
+	initial {
+		helpmsg := [
+		"<<< Icon Expression Syntax >>>",
+		"",
+		"lineno expression",
+		"",
+		"<<< Command Summary >>>",
+		" (1st character works)",
+		"",
+		"read [ file ]",
+		"write [ file ]",
+		"list [ begno [ endno ] ]",
+		"delete [ begno [ endno ] ]",
+		"sequence [ begno [ increment ] ]",
+		"execute | e [ args ]",
+                 "executex | x compile/run finedit & sibenik",
+                 "executey | y compile/run finedit",
+                 "executez | z compile/run sibenik",
+                 "executes | s compile/run sdraw01",
+		"quit",
+		"help|h",
+                "h2 for notes list"
+		]
+	}
+
+#	print it
+	every WWrite(!helpmsg)
+
+end
+
+procedure helpprog2()
+
+	static helpmsg2
+
+#always check these!
+
+#	define the help message
+	initial {
+		helpmsg2 := [
+		"<<< Master Note Reference >>>",
+		"",
+		"All cats start at line num",
+		"",
+		"<<< 8 SPACES BELOW! >>>",
+		" (--------------)",
+		"",
+		"50 WORK",
+		"140 HOME",
+		"360 ART AND HOBBIES",
+		"490 PROGS AND GEEK",
+		"740 SIBENIK",
+		"1770 SIBENIK WANTED",
+                "2240 SDRAW01",
+		"2400 FRATISBASTARD",
+		"2590 MOVIE",
+                "2750 NEW NOTES"
+		]
+	}
+
+#	print it
+	every WWrite(!helpmsg2)
+
+end
+
+procedure quitprog()
+   local response
+
+#	make sure a modified file has been written
+	if MFLAG > 0 then {
+		WWrites("Write before quitting? ")
+		response := WRead()
+		if any('yY',response) then
+			writeprog()
+	}
+
+	#stop("Goodbye.")
+       main2()
+
+end
+
+############################################################
+
+#ffmpeg
+
+procedure inputpromptffm()
+ 
+        s1 := WRead()
+
+         mainffmpeg(s1)
+
+    return
+
+end
+
+procedure mainffmpeg(args)
+
+#IM SEQ W/24 FPS FORCE out (ffxx)
+
+if args[1] == "a" then system("ffmpeg -f image2 -i ff%02d.png -r 24 output1.mp4")
+if args[1] == "b" then system("ffmpeg -f image2 -i ff%02d.png -r 24 output2.mp4")
+if args[1] == "c" then system("ffmpeg -f image2 -i ff%02d.png -r 24 output3.mp4")
+if args[1] == "d" then system("ffmpeg -f image2 -i ff%02d.png -r 24 output4.mp4")
+if args[1] == "e" then system("ffmpeg -f image2 -i ff%02d.png -r 24 output5.mp4")
+
+# # # # # # #  
+
+#IM SEQ W/24 FPS FORCE out (fxx)
+
+if args[1] == "f" then system("ffmpeg -f image2 -i f%02d.png -r 24 output21.mp4")
+if args[1] == "g" then system("ffmpeg -f image2 -i f%02d.png -r 24 output22.mp4")
+if args[1] == "h" then system("ffmpeg -f image2 -i f%02d.png -r 24 output23.mp4")
+if args[1] == "i" then system("ffmpeg -f image2 -i f%02d.png -r 24 output24.mp4")
+if args[1] == "j" then system("ffmpeg -f image2 -i f%02d.png -r 24 output25.mp4")
+
+# # # # # # #  
+ 
+#key w/24 fps force out?
+#is black 000000? white FFFFFF?
+
+if args[1] == "x" then system("ffmpeg -i k01.png -i a.mp4 -filter_complex \"[1:v]colorkey=0x000000:0.3:0.2[ckout];[0:v][ckout]overlay[out]\" -map \"[out]\" -r 24 output.mp4")
+
+# # # # # # #
+
+#convolution="1 1 1 1 1 1 1 1 1:1 1 1 1 1 1 1 1 1:1 1 1 1 1 1 1 1 1:1 1 1 1 1 1 1 1 1:1/9:1/9:1/9:1/9"
+ 
+#convolution w/24 fps force out? see other convolves
+
+if args[1] == "z" then system("ffmpeg -i a.mp4 -filter convolution=\"1 1 1 1 1 1 1 1 1:1 1 1 1 1 1 1 1 1:1 1 1 1 1 1 1 1 1:1 1 1 1 1 1 1 1 1:1/9:1/9:1/9:1/9\" -r 24 output.mp4")
+
+# # # # # # # 
+
+else if args[1] == "m" then helpmsgffm()
+    
+end
+
+procedure helpmsgffm()
+Fg("blue")
+WWrite("ffmpeg guide")
+WWrite("")
+WWrite("Image sequences for ffxx:") 
+WWrite("[a=image seq to output1.mp4 (ffxx frames)]")
+WWrite("[b=image seq to output2.mp4 (ffxx frames)]") 
+WWrite("[c=image seq to output3.mp4 (ffxx frames)]") 
+WWrite("[d=image seq to output4.mp4 (ffxx frames)]") 
+WWrite("[e=image seq to output5.mp4 (ffxx frames)]") 
+WWrite("Image sequences for fxx:") 
+WWrite("[f=image seq to output21.mp4 (fxx frames)]")
+WWrite("[g=image seq to output22.mp4 (fxx frames)]")
+WWrite("[h=image seq to output23.mp4 (fxx frames)]")
+WWrite("[i=image seq to output24.mp4 (fxx frames)]")
+WWrite("[j=image seq to output25.mp4 (fxx frames)]")
+WWrite("")
+WWrite("[x=key black a.mp4 over k01.png]")
+WWrite("")
+WWrite("[z=add blur to a.mp4]")
+WWrite("") 
+end
+
+###########################################################
+
+procedure inputpromptfedit()
+ 
+        #s2 := WRead(s1)
+
+         finedit()
+
+    return
+
+end
+
+###########################################################
+
+procedure finedit()
+
+WWrite("Enter sphere001 := [0,0,0,0,0]")
+  
+WRead() := xt1
+WRead() := xt2
+WRead() := xt3
+WRead() := xt4
+WRead() := xt5
+
+#sphere001 := [0,0,0,0,0]
+
+#xtst := s1 
+
+#turn off ran variables for individual/manual!!VVVV
+
+#sphere array
+#controls: xyzs to xyzs by xyzs, etc.
+
+#default out-of-way
+#(sry1 := 300,sry2 := 300,sry3 := 300) all others 1
+
+(srx1 := 1,srx2 := 1,srx3 := 1) #X vals
+(sry1 := 300,sry2 := 300,sry3 := 300) #Y vals 
+(srz1 := 1,srz2 := 1,srz3 := 1) #Z vals  
+(srs1 := 1,srs2 := 1,srs3 := 1) #Size vals
+
+srtt1 := 1 #tex
+
+#cylinder array
+#controls: crx1 to crx2 by crx3, etc.
+
+#default out-of-way
+#(cry1 := 200,cry2 := 200,cry3 := 200) all others 1
+  
+(crx1 := 1,crx2 := 1,crx3 := 1) #X vals
+(cry1 := 200,cry2 := 200,cry3 := 200) #Y vals   
+(crz1 := 1,crz2 := 1,crz3 := 1) #Z vals   
+(crt1 := 1,crt2 := 1,crt3 := 1) #Size vals
+(crb1 := 1,crb2 := 1,crb3 := 1) #Top vals
+(crs1 := 1,crs2 := 1,crs3 := 1) #Bottom vals
+
+rctt1 := 2 #tex
+
+######################################################################################################################
+
+#random plane arrays
+
+#outofway
+
+(ha1:=200,hb1:=200,hc1:=200,hd1:=200,he1:=200,hf1:=200,hg1:=200,hh1:=200,hi1:=200,hj1:=200,hk1:=200,ha2:=200,hb2:=200,hc2:=200,hd2:=200,he2:=200,hf2:=200,hg2:=200,hh2:=200,hi2:=200,hj2:=200,hk2:=200,ha3:=200,hb3:=200,hc3:=200,hd3:=200,he3:=200,hf3:=200,hg3:=200,hh3:=200,hi3:=200,hj3:=200,hk3:=200,ha4:=200,hb4:=200,hc4:=200,hd4:=200,he4:=200,hf4:=200,hg4:=200,hh4:=200,hi4:=200,hj4:=200,hk4:=200,ha5:=200,hb5:=200,hc5:=200,hd5:=200,he5:=200,hf5:=200,hg5:=200,hh5:=200,hi5:=200,hj5:=200,hk5:=200,ha6:=200,hb6:=200,hc6:=200,hd6:=200,he6:=200,hf6:=200,hg6:=200,hh6:=200,hi6:=200,hj6:=200,hk6:=200,ha7:=200,hb7:=200,hc7:=200,hd7:=200,he7:=200,hf7:=200,hg7:=200,hh7:=200,hi7:=200,hj7:=200,hk7:=200,ha8:=200,hb8:=200,hc8:=200,hd8:=200,he8:=200,hf8:=200,hg8:=200,hh8:=200,hi8:=200,hj8:=200,hk8:=200,ha9:=200,hb9:=200,hc9:=200,hd9:=200,he9:=200,hf9:=200,hg9:=200,hh9:=200,hi9:=200,hj9:=200,hk9:=200,ha10:=200,hb10:=200,hc10:=200,hd10:=200,he10:=200,hf10:=200,hg10:=200,hh10:=200,hi10:=200,hj10:=200,hk10:=200,ha11:=200,hb11:=200,hc11:=200,hd11:=200,he11:=200,hf11:=200,hg11:=200,hh11:=200,hi11:=200,hj11:=200,hk11:=200)
+
+#hills
+#(ha1:=.2,hb1:=.2,hc1:=.2,hd1:=.2,he1:=.2,hf1:=.2,hg1:=.2,hh1:=.2,hi1:=.2,hj1:=.2,hk1:=.2,ha2:=.2,hb2:=.3,hc2:=.3,hd2:=.3,he2:=.3,hf2:=.3,hg2:=.3,hh2:=.3,hi2:=.3,hj2:=.3,hk2:=.2,ha3:=.2,hb3:=.3,hc3:=.4,hd3:=.4,he3:=.4,hf3:=.4,hg3:=.4,hh3:=.3,hi3:=.4,hj3:=.3,hk3:=.2,ha4:=.2,hb4:=.3,hc4:=.5,hd4:=.5,he4:=.4,hf4:=.4,hg4:=.4,hh4:=.3,hi4:=.4,hj4:=.3,hk4:=.2,ha5:=.2,hb5:=.3,hc5:=.5,hd5:=.5,he5:=.5,hf5:=.4,hg5:=.5,hh5:=.4,hi5:=.5,hj5:=.3,hk5:=.2,ha6:=.2,hb6:=.3,hc6:=.5,hd6:=.5,he6:=.5,hf6:=.6,hg6:=.5,hh6:=.5,hi6:=.5,hj6:=.3,hk6:=.2,ha7:=.2,hb7:=.3,hc7:=.5,hd7:=.5,he7:=.5,hf7:=.6,hg7:=.5,hh7:=.6,hi7:=.5,hj7:=.3,hk7:=.2,ha8:=.2,hb8:=.3,hc8:=.5,hd8:=.5,he8:=.5,hf8:=.5,hg8:=.5,hh8:=.5,hi8:=.5,hj8:=.3,hk8:=.2,ha9:=.2,hb9:=.3,hc9:=.4,hd9:=.4,he9:=.4,hf9:=.4,hg9:=.4,hh9:=.4,hi9:=.4,hj9:=.3,hk9:=.2,ha10:=.2,hb10:=.3,hc10:=.3,hd10:=.3,he10:=.3,hf10:=.3,hg10:=.3,hh10:=.3,hi10:=.3,hj10:=.3,hk10:=.2,ha11:=.2,hb11:=.2,hc11:=.2,hd11:=.2,he11:=.2,hf11:=.2,hg11:=.2,hh11:=.2,hi11:=.2,hj11:=.2,hk11:=.2)
+
+#mountain
+#(a1:=.1,b1:=.1,c1:=.1,d1:=.1,e1:=.1,f1:=.1,g1:=.1,h1:=.1,i1:=.1,j1:=.1,k1:=.1,a2:=.1,b2:=.3,c2:=.3,d2:=.3,e2:=.3,f2:=.3,g2:=.3,h2:=.3,i2:=.3,j2:=.3,k2:=.2,a3:=.2,b3:=.3,c3:=.4,d3:=.4,e3:=.4,f3:=.4,g3:=.4,h3:=.3,i3:=.4,j3:=.3,k3:=.2,a4:=.2,b4:=.3,c4:=.5,d4:=.5,e4:=.4,f4:=.4,g4:=.4,h4:=.3,i4:=.4,j4:=.3,k4:=.2,a5:=.2,b5:=.3,c5:=.5,d5:=.5,e5:=.5,f5:=.4,g5:=.5,h5:=.4,i5:=.5,j5:=.3,k5:=.2,a6:=.2,b6:=.3,c6:=.5,d6:=.5,e6:=.5,f6:=.6,g6:=.5,h6:=.5,i6:=.5,j6:=.3,k6:=.2,a7:=.2,b7:=.3,c7:=.5,d7:=.5,e7:=.5,f7:=.6,g7:=.5,h7:=.6,i7:=.5,j7:=.3,k7:=.2,a8:=.2,b8:=.3,c8:=.5,d8:=.5,e8:=.5,f8:=.5,g8:=.5,h8:=.5,i8:=.5,j8:=.3,k8:=.2,a9:=.2,b9:=.3,c9:=.4,d9:=.4,e9:=.4,f9:=.4,g9:=.4,h9:=.4,i9:=.4,j9:=.3,k9:=.2,a10:=.2,b10:=.3,c10:=.3,d10:=.3,e10:=.3,f10:=.3,g10:=.3,h10:=.3,i10:=.3,j10:=.3,k10:=.1,a11:=.-2,b11:=.-3,c11:=.-2,d11:=.1,e11:=.1,f11:=.1,g11:=.1,h11:=.1,i11:=.1,j11:=.1,k11:=.1)
+
+#canyon
+#(ha1:=2,hb1:=1,hc1:=.5,hd1:=.4,he1:=.3,hf1:=.2,hg1:=1,hh1:=.3,hi1:=.4,hj1:=.5,hk1:=1,ha2:=2,hb2:=1,hc2:=.5,hd2:=.4,he2:=.3,hf2:=.2,hg2:=1,hh2:=.3,hi2:=.4,hj2:=.5,hk2:=1,ha3:=2,hb3:=1,hc3:=.5,hd3:=.4,he3:=.3,hf3:=.2,hg3:=1,hh3:=.3,hi3:=.4,hj3:=.5,hk3:=1,ha4:=2,hb4:=1,hc4:=.5,hd4:=.4,he4:=.3,hf4:=.2,hg4:=1,hh4:=.3,hi4:=.4,hj4:=.5,hk4:=1,ha5:=2,hb5:=1,hc5:=.5,hd5:=.4,he5:=.3,hf5:=.2,hg5:=1,hh5:=.3,hi5:=.4,hj5:=.5,hk5:=1,ha6:=2,hb6:=1,hc6:=.5,hd6:=.4,he6:=.3,hf6:=.2,hg6:=1,hh6:=.3,hi6:=.4,hj6:=.5,hk6:=1,ha7:=2,hb7:=1,hc7:=.5,hd7:=.4,he7:=.3,hf7:=.2,hg7:=1,hh7:=.3,hi7:=.4,hj7:=.5,hk7:=1,ha8:=2,hb8:=1,hc8:=.5,hd8:=.4,he8:=.3,hf8:=.2,hg8:=1,hh8:=.3,hi8:=.4,hj8:=.5,hk8:=1,ha9:=2,hb9:=1,hc9:=.5,hd9:=.4,he9:=.3,hf9:=.2,hg9:=1,hh9:=.3,hi9:=.4,hj9:=.5,hk9:=1,ha10:=2,hb10:=1,hc10:=.5,hd10:=.4,he10:=.3,hf10:=.2,hg10:=.3,hh10:=.4,hi10:=.5,hj10:=1,hk10:=1,ha11:=2,hb11:=1,hc11:=.5,hd11:=.4,he11:=.3,hf11:=.2,hg11:=.3,hh11:=.4,hi11:=.5,hj11:=1,hk11:=1)
+
+#default
+#(ha1:=1,hb1:=1,hc1:=1,hd1:=1,he1:=1,hf1:=1,hg1:=1,hh1:=1,hi1:=1,hj1:=1,hk1:=1,ha2:=1,hb2:=1,hc2:=1,hd2:=1,he2:=1,hf2:=1,hg2:=1,hh2:=1,hi2:=1,hj2:=1,hk2:=1,ha3:=1,hb3:=1,hc3:=1,hd3:=1,he3:=1,hf3:=1,hg3:=1,hh3:=1,hi3:=1,hj3:=1,hk3:=1,ha4:=1,hb4:=1,hc4:=1,hd4:=1,he4:=1,hf4:=1,hg4:=1,hh4:=1,hi4:=1,hj4:=1,hk4:=1,ha5:=1,hb5:=1,hc5:=1,hd5:=1,he5:=1,hf5:=1,hg5:=1,hh5:=1,hi5:=1,hj5:=1,hk5:=1,ha6:=1,hb6:=1,hc6:=1,hd6:=1,he6:=1,hf6:=1,hg6:=1,hh6:=1,hi6:=1,hj6:=1,hk6:=1,ha7:=1,hb7:=1,hc7:=1,hd7:=1,he7:=1,hf7:=1,hg7:=1,hh7:=1,hi7:=1,hj7:=1,hk7:=1,ha8:=1,hb8:=1,hc8:=1,hd8:=1,he8:=1,hf8:=1,hg8:=1,hh8:=1,hi8:=1,hj8:=1,hk8:=1,ha9:=1,hb9:=1,hc9:=1,hd9:=1,he9:=1,hf9:=1,hg9:=1,hh9:=1,hi9:=1,hj9:=1,hk9:=1,ha10:=1,hb10:=1,hc10:=1,hd10:=1,he10:=1,hf10:=1,hg10:=1,hh10:=1,hi10:=1,hj10:=1,hk10:=1,ha11:=1,hb11:=1,hc11:=1,hd11:=1,he11:=1,hf11:=1,hg11:=1,hh11:=1,hi11:=1,hj11:=1,hk11:=1)
+
+
+#(ha1:=1,hb1:=1,hc1:=1,hd1:=1,he1:=1,hf1:=1,hg1:=1,hh1:=1,hi1:=1,hj1:=1,hk1:=1,ha2:=1,hb2:=1,hc2:=1,hd2:=1,he2:=1,hf2:=1,hg2:=1,hh2:=1,hi2:=1,hj2:=1,hk2:=1,ha3:=1,hb3:=1,hc3:=1,hd3:=1,he3:=1,hf3:=1,hg3:=1,hh3:=1,hi3:=1,hj3:=1,hk3:=1,ha4:=1,hb4:=1,hc4:=1,hd4:=1,he4:=1,hf4:=1,hg4:=1,hh4:=1,hi4:=1,hj4:=1,hk4:=1,ha5:=1,hb5:=1,hc5:=1,hd5:=1,he5:=1,hf5:=1,hg5:=1,hh5:=1,hi5:=1,hj5:=1,hk5:=1,ha6:=1,hb6:=1,hc6:=1,hd6:=1,he6:=1,hf6:=1,hg6:=1,hh6:=1,hi6:=1,hj6:=1,hk6:=1,ha7:=1,hb7:=1,hc7:=1,hd7:=1,he7:=1,hf7:=1,hg7:=1,hh7:=1,hi7:=1,hj7:=1,hk7:=1,ha8:=1,hb8:=1,hc8:=1,hd8:=1,he8:=1,hf8:=1,hg8:=1,hh8:=1,hi8:=1,hj8:=1,hk8:=1,ha9:=1,hb9:=1,hc9:=1,hd9:=1,he9:=1,hf9:=1,hg9:=1,hh9:=1,hi9:=1,hj9:=1,hk9:=1,ha10:=1,hb10:=1,hc10:=1,hd10:=1,he10:=1,hf10:=1,hg10:=1,hh10:=1,hi10:=1,hj10:=1,hk10:=1,ha11:=1,hb11:=1,hc11:=1,hd11:=1,he11:=1,hf11:=1,hg11:=1,hh11:=1,hi11:=1,hj11:=1,hk11:=1)
+
+
+######################################################################################################################
+
+#plane array
+#controls: x,z,?y,?y,?y,?y
+#defaults (rt21 := 1,rt22 := 1,rt23 := 200,rt24 := 200,rt25 := 200,rt26 := 200)
+
+(rt21 := 1,rt22 := 1,rt23 := 200,rt24 := 200,rt25 := 200,rt26 := 200)
+
+(ra1 := ha1,rb1 := hb1,rc1 := hc1,rd1 := hd1,re1 := he1,rf1 := hf1,rg1 := hg1,rh1 := hh1,ri1 := hi1,rj1 := hj1,rk1 := hk1)
+(ra2 := ha2,rb2 := hb2,rc2 := hc2,rd2 := hd2,re2 := he2,rf2 := hf2,rg2 := hg2,rh2 := hh2,ri2 := hi2,rj2 := hj2,rk2 := hk2)
+(ra3 := ha3,rb3 := hb3,rc3 := hc3,rd3 := hd3,re3 := he3,rf3 := hf3,rg3 := hg3,rh3 := hh3,ri3 := hi3,rj3 := hj3,rk3 := hk3)
+(ra4 := ha4,rb4 := hb4,rc4 := hc4,rd4 := hd4,re4 := he4,rf4 := hf4,rg4 := hg4,rh4 := hh4,ri4 := hi4,rj4 := hj4,rk4 := hk4)
+(ra5 := ha5,rb5 := hb5,rc5 := hc5,rd5 := hd5,re5 := he5,rf5 := hf5,rg5 := hg5,rh5 := hh5,ri5 := hi5,rj5 := hj5,rk5 := hk5)
+(ra6 := ha6,rb6 := hb6,rc6 := hc6,rd6 := hd6,re6 := he6,rf6 := hf6,rg6 := hg6,rh6 := hh6,ri6 := hi6,rj6 := hj6,rk6 := hk6)
+(ra7 := ha7,rb7 := hb7,rc7 := hc7,rd7 := hd7,re7 := he7,rf7 := hf7,rg7 := hg7,rh7 := hh7,ri7 := hi7,rj7 := hj7,rk7 := hk7)
+(ra8 := ha8,rb8 := hb8,rc8 := hc8,rd8 := hd8,re8 := he8,rf8 := hf8,rg8 := hg8,rh8 := hh8,ri8 := hi8,rj8 := hj8,rk8 := hk8)
+(ra9 := ha9,rb9 := hb9,rc9 := hc9,rd9 := hd9,re9 := he9,rf9 := hf9,rg9 := hg9,rh9 := hh9,ri9 := hi9,rj9 := hj9,rk9 := hk9)
+(ra10 := ha10,rb10 := hb10,rc10 := hc10,rd10 := hd10,re10 := he10,rf10 := hf10,rg10 := hg10,rh10 := hh10,ri10 := hi10,rj10 := hj10,rk10 := hk10)
+(ra11 := ha11,rb11 := hb11,rc11 := hc11,rd11 := hd11,re11 := he11,rf11 := hf11,rg11 := hg11,rh11 := hh11,ri11 := hi11,rj11 := hj11,rk11 := hk11)
+
+(rt2t1 := 3) #tex
+
+#####################################################################
+
+mainE(srx1,srx2,srx3,sry1,sry2,sry3,srz1,srz2,srz3,srs1,srs2,srs3,srtt1,crx1,crx2,crx3,cry1,cry2,cry3,crz1,crz2,crz3,crt1,crt2,crt3,crb1,crb2,crb3,crs1,crs2,crs3,rctt1,rt21,rt22,rt23,rt24,rt25,rt26,ra1,rb1,rc1,rd1,re1,rf1,rg1,rh1,ri1,rj1,rk1,ra2,rb2,rc2,rd2,re2,rf2,rg2,rh2,ri2,rj2,rk2,ra3,rb3,rc3,rd3,re3,rf3,rg3,rh3,ri3,rj3,rk3,ra4,rb4,rc4,rd4,re4,rf4,rg4,rh4,ri4,rj4,rk4,ra5,rb5,rc5,rd5,re5,rf5,rg5,rh5,ri5,rj5,rk5,ra6,rb6,rc6,rd6,re6,rf6,rg6,rh6,ri6,rj6,rk6,ra7,rb7,rc7,rd7,re7,rf7,rg7,rh7,ri7,rj7,rk7,ra8,rb8,rc8,rd8,re8,rf8,rg8,rh8,ri8,rj8,rk8,ra9,rb9,rc9,rd9,re9,rf9,rg9,rh9,ri9,rj9,rk9,ra10,rb10,rc10,rd10,re10,rf10,rg10,rh10,ri10,rj10,rk10,ra11,rb11,rc11,rd11,re11,rf11,rg11,rh11,ri11,rj11,rk11,rt2t1,xt1,xt2,xt3,xt4,xt5)
+
+end
+
+##############################################################
+
+procedure mainE(xs1,xs2,xs3,ys1,ys2,ys3,zs1,zs2,zs3,ss1,ss2,ss3,rst1,xc1,xc2,xc3,yc1,yc2,yc3,zc1,zc2,zc3,sc1,sc2,sc3,sc21,sc22,sc23,sc31,sc32,sc33,rct1,t21,t22,t23,t24,t25,t26,a1,b1,c1,d1,e1,f1,g1,h1,i1,j1,k1,a2,b2,c2,d2,e2,f2,g2,h2,i2,j2,k2,a3,b3,c3,d3,e3,f3,g3,h3,i3,j3,k3,a4,b4,c4,d4,e4,f4,g4,h4,i4,j4,k4,a5,b5,c5,d5,e5,f5,g5,h5,i5,j5,k5,a6,b6,c6,d6,e6,f6,g6,h6,i6,j6,k6,a7,b7,c7,d7,e7,f7,g7,h7,i7,j7,k7,a8,b8,c8,d8,e8,f8,g8,h8,i8,j8,k8,a9,b9,c9,d9,e9,f9,g9,h9,i9,j9,k9,a10,b10,c10,d10,e10,f10,g10,h10,i10,j10,k10,a11,b11,c11,d11,e11,f11,g11,h11,i11,j11,k11,t2t1,xt1,xt2,xt3,xt4,xt5)  
+       
+out1 := open("input.txt","w")
+
+##############################################################
+
+#main manual grids
+#defaults all 0
+#turn off ran vals below!VVVV
+
+##############################################################
+
+sphere001 := [0,0,0,0,0]
+sphere002 := [0,0,0,0,0]
+sphere003 := [0,0,0,0,0]
+sphere004 := [0,0,0,0,0]
+sphere005 := [0,0,0,0,0]
+sphere006 := [0,0,0,0,0]
+sphere007 := [0,0,0,0,0]
+sphere008 := [0,0,0,0,0]
+sphere009 := [0,0,0,0,0]
+sphere010 := [0,0,0,0,0]
+
+##############################################################
+
+cylinder001 := [0,0,0,0,0,0,0]
+cylinder002 := [0,0,0,0,0,0,0]
+cylinder003 := [0,0,0,0,0,0,0]
+cylinder004 := [0,0,0,0,0,0,0]
+cylinder005 := [0,0,0,0,0,0,0]
+cylinder006 := [0,0,0,0,0,0,0]
+cylinder007 := [0,0,0,0,0,0,0]
+cylinder008 := [0,0,0,0,0,0,0]
+cylinder009 := [0,0,0,0,0,0,0]
+cylinder010 := [0,0,0,0,0,0,0]
+cylinder011 := [0,0,0,0,0,0,0]
+cylinder012 := [0,0,0,0,0,0,0]
+cylinder013 := [0,0,0,0,0,0,0]
+cylinder014 := [0,0,0,0,0,0,0]
+cylinder015 := [0,0,0,0,0,0,0]
+cylinder016 := [0,0,0,0,0,0,0]
+cylinder017 := [0,0,0,0,0,0,0]
+cylinder018 := [0,0,0,0,0,0,0]
+cylinder019 := [0,0,0,0,0,0,0]
+cylinder020 := [0,0,0,0,0,0,0]
+
+##############################################################
+
+plane001 := [0,0,0,0,0,0,0,0,0,0,0,0,0]
+plane002 := [0,0,0,0,0,0,0,0,0,0,0,0,0]
+plane003 := [0,0,0,0,0,0,0,0,0,0,0,0,0]
+plane004 := [0,0,0,0,0,0,0,0,0,0,0,0,0]
+plane005 := [0,0,0,0,0,0,0,0,0,0,0,0,0]
+plane006 := [0,0,0,0,0,0,0,0,0,0,0,0,0]
+plane007 := [0,0,0,0,0,0,0,0,0,0,0,0,0]
+plane008 := [0,0,0,0,0,0,0,0,0,0,0,0,0]
+plane009 := [0,0,0,0,0,0,0,0,0,0,0,0,0]
+plane010 := [0,0,0,0,0,0,0,0,0,0,0,0,0]
+
+##############################################################
+
+#default out-of-way
+#T1111 := [0,0,1,1,1,1]
+
+T1111 := [0,0,1,1,1,1]
+
+T0001 := [0,0,0,0,0,0,0,0,0,0,0]
+T0002 := [0,0,0,0,0,0,0,0,0,0,0]
+T0003 := [0,0,0,0,0,0,0,0,0,0,0]
+T0004 := [0,0,0,0,0,0,0,0,0,0,0]
+T0005 := [0,0,0,0,0,0,0,0,0,0,0]
+T0006 := [0,0,0,0,0,0,0,0,0,0,0]
+T0007 := [0,0,0,0,0,0,0,0,0,0,0]
+T0008 := [0,0,0,0,0,0,0,0,0,0,0]
+T0009 := [0,0,0,0,0,0,0,0,0,0,0]
+T0010 := [0,0,0,0,0,0,0,0,0,0,0]
+T0011 := [0,0,0,0,0,0,0,0,0,0,0]
+
+T2222 := [4] #tex
+
+##############################################################
+
+#voxel grid
+
+#default out-of-way
+#V1111 := [1,1,1,1,200,200,200,200,200]
+#controls:x,z,to x,to z,?y,?y,?y,?y,?y
+
+
+V1111 := [1,1,1,1,200,200,200,200,200]
+
+##############################################################
+
+every Ea1 := xs1 to xs2 by xs3 do {
+every Eb1 := ys1 to ys2 by ys3 do {
+every Ec1 := zs1 to zs2 by zs3 do {
+every Ed1 := ss1 to ss2 by ss3 do {
+    
+}
+}
+}
+}
+
+#sphere001 := [-?Ea1,-?Eb1,?Ec1,?Ed1,rst1]
+sphere002 := [-?Ea1,-?Eb1,?Ec1,?Ed1,rst1]
+sphere003 := [-?Ea1,-?Eb1,?Ec1,?Ed1,rst1]
+sphere004 := [-?Ea1,-?Eb1,?Ec1,?Ed1,rst1]
+sphere005 := [-?Ea1,-?Eb1,?Ec1,?Ed1,rst1]
+sphere006 := [-?Ea1,-?Eb1,?Ec1,?Ed1,rst1]
+sphere007 := [-?Ea1,-?Eb1,?Ec1,?Ed1,rst1]
+sphere008 := [-?Ea1,-?Eb1,?Ec1,?Ed1,rst1]
+sphere009 := [-?Ea1,-?Eb1,?Ec1,?Ed1,rst1]
+sphere010 := [-?Ea1,-?Eb1,?Ec1,?Ed1,rst1]
+
+##############################################################
+
+every Ca1 := xc1 to xc2 by xc3 do {
+every Cb1 := yc1 to yc2 by yc3 do {
+every Cc1 := zc1 to zc2 by zc3 do {
+every Cd1 := sc1 to sc2 by sc3 do {
+every Ce1 := sc21 to sc22 by sc23 do {
+every Cf1 := sc31 to sc32 by sc33 do { 
+  
+}
+}
+}
+}
+}
+}
+
+cylinder001 := [?Ca1,Cb1,Cc1,Cd1,Ce1,Cf1,rct1]
+cylinder002 := [?Ca1,Cb1,Cc1,Cd1,Ce1,Cf1,rct1]
+cylinder003 := [?Ca1,Cb1,Cc1,Cd1,Ce1,Cf1,rct1]
+cylinder004 := [?Ca1,Cb1,Cc1,Cd1,Ce1,Cf1,rct1]
+cylinder005 := [?Ca1,Cb1,Cc1,Cd1,Ce1,Cf1,rct1]
+cylinder006 := [?Ca1,Cb1,Cc1,Cd1,Ce1,Cf1,rct1]
+cylinder007 := [?Ca1,Cb1,Cc1,Cd1,Ce1,Cf1,rct1]
+cylinder008 := [?Ca1,Cb1,Cc1,Cd1,Ce1,Cf1,rct1]
+cylinder009 := [?Ca1,Cb1,Cc1,Cd1,Ce1,Cf1,rct1]
+cylinder010 := [?Ca1,Cb1,Cc1,Cd1,Ce1,Cf1,rct1]
+cylinder011 := [?Ca1,Cb1,Cc1,Cd1,Ce1,Cf1,rct1]
+cylinder012 := [?Ca1,Cb1,Cc1,Cd1,Ce1,Cf1,rct1]
+cylinder013 := [?Ca1,Cb1,Cc1,Cd1,Ce1,Cf1,rct1]
+cylinder014 := [?Ca1,Cb1,Cc1,Cd1,Ce1,Cf1,rct1]
+cylinder015 := [?Ca1,Cb1,Cc1,Cd1,Ce1,Cf1,rct1]
+cylinder016 := [?Ca1,Cb1,Cc1,Cd1,Ce1,Cf1,rct1]
+cylinder017 := [?Ca1,Cb1,Cc1,Cd1,Ce1,Cf1,rct1]
+cylinder018 := [?Ca1,Cb1,Cc1,Cd1,Ce1,Cf1,rct1]
+cylinder019 := [?Ca1,Cb1,Cc1,Cd1,Ce1,Cf1,rct1]
+cylinder020 := [?Ca1,Cb1,Cc1,Cd1,Ce1,Cf1,rct1]
+
+################################
+
+T2111 := [t21,t22,t23,t24,t25,t26]
+
+T2001 := [?a1,?b1,?c1,?d1,?e1,?f1,?g1,?h1,?i1,?j1,?k1]
+T2002 := [?a2,?b2,?c2,?d2,?e2,?f2,?g2,?h2,?i2,?j2,?k2]
+T2003 := [?a3,?b3,?c3,?d3,?e3,?f3,?g3,?h3,?i3,?j3,?k3]
+T2004 := [?a4,?b4,?c4,?d4,?e4,?f4,?g4,?h4,?i4,?j4,?k4]
+T2005 := [?a5,?b5,?c5,?d5,?e5,?f5,?g5,?h5,?i5,?j5,?k5]
+T2006 := [?a6,?b6,?c6,?d6,?e6,?f6,?g6,?h6,?i6,?j6,?k6]
+T2007 := [?a7,?b7,?c7,?d7,?e7,?f7,?g7,?h7,?i7,?j7,?k7]
+T2008 := [?a8,?b8,?c8,?d8,?e8,?f8,?g8,?h8,?i8,?j8,?k8]
+T2009 := [?a9,?b9,?c9,?d9,?e9,?f9,?g9,?h9,?i9,?j9,?k9]
+T2010 := [?a10,?b10,?c10,?d10,?e10,?f10,?g10,?h10,?i10,?j10,?k10]
+T2011 := [?a11,?b11,?c11,?d11,?e11,?f11,?g11,?h11,?i11,?j11,?k11]
+
+T2222 := [t2t1]
+
+################################################################
+################################################################
+
+#dec tree?
+
+ #tpy1 := T2004[4] 
+
+#(rpx := 1,rpz := 1,rpxx := .5,rpyy := .2,rpzz := .2,rtex := 8)
+
+# if tpy1 > .8 then cylinder001 :=  [rpx,tpy1,rpz,rpxx,rpyy,rpzz,rtex]   #mess w <>.-etc
+ 
+
+################################################################
+################################################################
+
+#gears
+
+S0001 := sphere001[1]
+S0002 := sphere001[2]
+S0003 := sphere001[3]
+S0004 := sphere001[4]
+S0005 := sphere001[5]
+
+S1001 := sphere002[1]
+S1002 := sphere002[2]
+S1003 := sphere002[3]
+S1004 := sphere002[4]
+S1005 := sphere002[5]
+
+S2001 := sphere003[1]
+S2002 := sphere003[2]
+S2003 := sphere003[3]
+S2004 := sphere003[4]
+S2005 := sphere003[5]
+
+S3001 := sphere004[1]
+S3002 := sphere004[2]
+S3003 := sphere004[3]
+S3004 := sphere004[4]
+S3005 := sphere004[5]
+
+S4001 := sphere005[1]
+S4002 := sphere005[2]
+S4003 := sphere005[3]
+S4004 := sphere005[4]
+S4005 := sphere005[5]
+
+S5001 := sphere006[1]
+S5002 := sphere006[2]
+S5003 := sphere006[3]
+S5004 := sphere006[4]
+S5005 := sphere006[5]
+
+S6001 := sphere007[1]
+S6002 := sphere007[2]
+S6003 := sphere007[3]
+S6004 := sphere007[4]
+S6005 := sphere007[5]
+
+S7001 := sphere008[1]
+S7002 := sphere008[2]
+S7003 := sphere008[3]
+S7004 := sphere008[4]
+S7005 := sphere008[5]
+
+S8001 := sphere009[1]
+S8002 := sphere009[2]
+S8003 := sphere009[3]
+S8004 := sphere009[4]
+S8005 := sphere009[5]
+
+S9001 := sphere010[1]
+S9002 := sphere010[2]
+S9003 := sphere010[3]
+S9004 := sphere010[4]
+S9005 := sphere010[5]
+
+###################
+
+C1001 := cylinder001[1]
+C1002 := cylinder001[2]
+C1003 := cylinder001[3]
+C1004 := cylinder001[4]
+C1005 := cylinder001[5]
+C1006 := cylinder001[6]
+C1007 := cylinder001[7]
+
+C2001 := cylinder002[1]
+C2002 := cylinder002[2]
+C2003 := cylinder002[3]
+C2004 := cylinder002[4]
+C2005 := cylinder002[5]
+C2006 := cylinder002[6]
+C2007 := cylinder002[7]
+
+C3001 := cylinder003[1]
+C3002 := cylinder003[2]
+C3003 := cylinder003[3]
+C3004 := cylinder003[4]
+C3005 := cylinder003[5]
+C3006 := cylinder003[6]
+C3007 := cylinder003[7]
+
+C4001 := cylinder004[1]
+C4002 := cylinder004[2]
+C4003 := cylinder004[3]
+C4004 := cylinder004[4]
+C4005 := cylinder004[5]
+C4006 := cylinder004[6]
+C4007 := cylinder004[7]
+
+C5001 := cylinder005[1]
+C5002 := cylinder005[2]
+C5003 := cylinder005[3]
+C5004 := cylinder005[4]
+C5005 := cylinder005[5]
+C5006 := cylinder005[6]
+C5007 := cylinder005[7]
+
+C6001 := cylinder006[1]
+C6002 := cylinder006[2]
+C6003 := cylinder006[3]
+C6004 := cylinder006[4]
+C6005 := cylinder006[5]
+C6006 := cylinder006[6]
+C6007 := cylinder006[7]
+
+C7001 := cylinder007[1]
+C7002 := cylinder007[2]
+C7003 := cylinder007[3]
+C7004 := cylinder007[4]
+C7005 := cylinder007[5]
+C7006 := cylinder007[6]
+C7007 := cylinder007[7]
+
+C8001 := cylinder008[1]
+C8002 := cylinder008[2]
+C8003 := cylinder008[3]
+C8004 := cylinder008[4]
+C8005 := cylinder008[5]
+C8006 := cylinder008[6]
+C8007 := cylinder008[7]
+
+C9001 := cylinder009[1]
+C9002 := cylinder009[2]
+C9003 := cylinder009[3]
+C9004 := cylinder009[4]
+C9005 := cylinder009[5]
+C9006 := cylinder009[6]
+C9007 := cylinder009[7]
+
+C0101 := cylinder010[1]
+C0102 := cylinder010[2]
+C0103 := cylinder010[3]
+C0104 := cylinder010[4]
+C0105 := cylinder010[5]
+C0106 := cylinder010[6]
+C0107 := cylinder010[7]
+
+C1101 := cylinder011[1]
+C1102 := cylinder011[2]
+C1103 := cylinder011[3]
+C1104 := cylinder011[4]
+C1105 := cylinder011[5]
+C1106 := cylinder011[6]
+C1107 := cylinder011[7]
+
+
+C1201 := cylinder012[1]
+C1202 := cylinder012[2]
+C1203 := cylinder012[3]
+C1204 := cylinder012[4]
+C1205 := cylinder012[5]
+C1206 := cylinder012[6]
+C1207 := cylinder012[7]
+
+C1301 := cylinder013[1]
+C1302 := cylinder013[2]
+C1303 := cylinder013[3]
+C1304 := cylinder013[4]
+C1305 := cylinder013[5]
+C1306 := cylinder013[6]
+C1307 := cylinder013[7]
+
+C1401 := cylinder014[1]
+C1402 := cylinder014[2]
+C1403 := cylinder014[3]
+C1404 := cylinder014[4]
+C1405 := cylinder014[5]
+C1406 := cylinder014[6]
+C1407 := cylinder014[7]
+
+C1501 := cylinder015[1]
+C1502 := cylinder015[2]
+C1503 := cylinder015[3]
+C1504 := cylinder015[4]
+C1505 := cylinder015[5]
+C1506 := cylinder015[6]
+C1507 := cylinder015[7]
+
+C1601 := cylinder016[1]
+C1602 := cylinder016[2]
+C1603 := cylinder016[3]
+C1604 := cylinder016[4]
+C1605 := cylinder016[5]
+C1606 := cylinder016[6]
+C1607 := cylinder016[7]
+
+C1701 := cylinder017[1]
+C1702 := cylinder017[2]
+C1703 := cylinder017[3]
+C1704 := cylinder017[4]
+C1705 := cylinder017[5]
+C1706 := cylinder017[6]
+C1707 := cylinder017[7]
+
+C1801 := cylinder018[1]
+C1802 := cylinder018[2]
+C1803 := cylinder018[3]
+C1804 := cylinder018[4]
+C1805 := cylinder018[5]
+C1806 := cylinder018[6]
+C1807 := cylinder018[7]
+
+C1901 := cylinder019[1]
+C1902 := cylinder019[2]
+C1903 := cylinder019[3]
+C1904 := cylinder019[4]
+C1905 := cylinder019[5]
+C1906 := cylinder019[6]
+C1907 := cylinder019[7]
+
+C0021 := cylinder020[1]
+C0022 := cylinder020[2]
+C0023 := cylinder020[3]
+C0024 := cylinder020[4]
+C0025 := cylinder020[5]
+C0026 := cylinder020[6]
+C0027 := cylinder020[7]
+
+###################
+
+#PLANE1
+P1001 := plane001[1]
+P1002 := plane001[2]
+P1003 := plane001[3]
+P1004 := plane001[4]
+P1005 := plane001[5]
+P1006 := plane001[6]
+P1007 := plane001[7]
+P1008 := plane001[8]
+P1009 := plane001[9]
+P1010 := plane001[10]
+P1011 := plane001[11]
+P1012 := plane001[12]
+P1013 := plane001[13]
+#PLANE2
+P2001 := plane002[1]
+P2002 := plane002[2]
+P2003 := plane002[3]
+P2004 := plane002[4]
+P2005 := plane002[5]
+P2006 := plane002[6]
+P2007 := plane002[7]
+P2008 := plane002[8]
+P2009 := plane002[9]
+P2010 := plane002[10]
+P2011 := plane002[11]
+P2012 := plane002[12]
+P2013 := plane002[13]
+#PLANE3
+P3001 := plane003[1]
+P3002 := plane003[2]
+P3003 := plane003[3]
+P3004 := plane003[4]
+P3005 := plane003[5]
+P3006 := plane003[6]
+P3007 := plane003[7]
+P3008 := plane003[8]
+P3009 := plane003[9]
+P3010 := plane003[10]
+P3011 := plane003[11]
+P3012 := plane003[12]
+P3013 := plane003[13]
+#PLANE4
+P4001 := plane004[1]
+P4002 := plane004[2]
+P4003 := plane004[3]
+P4004 := plane004[4]
+P4005 := plane004[5]
+P4006 := plane004[6]
+P4007 := plane004[7]
+P4008 := plane004[8]
+P4009 := plane004[9]
+P4010 := plane004[10]
+P4011 := plane004[11]
+P4012 := plane004[12]
+P4013 := plane004[13]
+#PLANE5
+P5001 := plane005[1]
+P5002 := plane005[2]
+P5003 := plane005[3]
+P5004 := plane005[4]
+P5005 := plane005[5]
+P5006 := plane005[6]
+P5007 := plane005[7]
+P5008 := plane005[8]
+P5009 := plane005[9]
+P5010 := plane005[10]
+P5011 := plane005[11]
+P5012 := plane005[12]
+P5013 := plane005[13]
+#PLANE6
+P6001 := plane006[1]
+P6002 := plane006[2]
+P6003 := plane006[3]
+P6004 := plane006[4]
+P6005 := plane006[5]
+P6006 := plane006[6]
+P6007 := plane006[7]
+P6008 := plane006[8]
+P6009 := plane006[9]
+P6010 := plane006[10]
+P6011 := plane006[11]
+P6012 := plane006[12]
+P6013 := plane006[13]
+#PLANE7
+P7001 := plane007[1]
+
+P7002 := plane007[2]
+P7003 := plane007[3]
+P7004 := plane007[4]
+P7005 := plane007[5]
+P7006 := plane007[6]
+P7007 := plane007[7]
+P7008 := plane007[8]
+P7009 := plane007[9]
+P7010 := plane007[10]
+P7011 := plane007[11]
+P7012 := plane007[12]
+P7013 := plane007[13]
+#PLANE8
+P8001 := plane008[1]
+P8002 := plane008[2]
+P8003 := plane008[3]
+P8004 := plane008[4]
+P8005 := plane008[5]
+P8006 := plane008[6]
+P8007 := plane008[7]
+P8008 := plane008[8]
+P8009 := plane008[9]
+P8010 := plane008[10]
+P8011 := plane008[11]
+P8012 := plane008[12]
+P8013 := plane008[13]
+#PLANE9
+P9001 := plane009[1]
+P9002 := plane009[2]
+P9003 := plane009[3]
+P9004 := plane009[4]
+P9005 := plane009[5]
+P9006 := plane009[6]
+P9007 := plane009[7]
+P9008 := plane009[8]
+P9009 := plane009[9]
+P9010 := plane009[10]
+P9011 := plane009[11]
+P9012 := plane009[12]
+P9013 := plane009[13]
+#PLANE10
+P0101 := plane010[1]
+P0102 := plane010[2]
+P0103 := plane010[3]
+P0104 := plane010[4]
+P0105 := plane010[5]
+P0106 := plane010[6]
+P0107 := plane010[7]
+P0108 := plane010[8]
+P0109 := plane010[9]
+P0110 := plane010[10]
+P0111 := plane010[11]
+P0112 := plane010[12]
+P0113 := plane010[13]
+
+###################
+
+V1001 := V1111[1]
+V1002 := V1111[2]
+V1003 := V1111[3]
+V1004 := V1111[4]
+V1005 := V1111[5]
+V1006 := V1111[6]
+V1007 := V1111[7]
+V1008 := V1111[8]
+V1009 := V1111[9]
+
+###################
+
+#terrain
+
+Tmv01 := T1111[1]
+Tmv02 := T1111[2]
+Tmv03 := T1111[3]
+Tmv04 := T1111[4]
+Tmv05 := T1111[5]
+Tmv06 := T1111[6]
+
+T0101 := T0001[1]
+T0102 := T0001[2]
+T0103 := T0001[3]
+T0104 := T0001[4]
+T0105 := T0001[5]
+T0106 := T0001[6]
+T0107 := T0001[7]
+T0108 := T0001[8]
+T0109 := T0001[9]
+T0110 := T0001[10]
+T0111 := T0001[11]
+
+T0201 := T0002[1]
+T0202 := T0002[2]
+T0203 := T0002[3]
+T0204 := T0002[4]
+T0205 := T0002[5]
+T0206 := T0002[6]
+T0207 := T0002[7]
+T0208 := T0002[8]
+T0209 := T0002[9]
+T0210 := T0002[10]
+T0211 := T0002[11]
+
+T0301 := T0003[1]
+T0302 := T0003[2]
+T0303 := T0003[3]
+T0304 := T0003[4]
+T0305 := T0003[5]
+T0306 := T0003[6]
+T0307 := T0003[7]
+T0308 := T0003[8]
+T0309 := T0003[9]
+T0310 := T0003[10]
+T0311 := T0003[11]
+
+T0401 := T0004[1]
+T0402 := T0004[2]
+T0403 := T0004[3]
+T0404 := T0004[4]
+T0405 := T0004[5]
+T0406 := T0004[6]
+T0407 := T0004[7]
+T0408 := T0004[8]
+T0409 := T0004[9]
+T0410 := T0004[10]
+T0411 := T0004[11]
+
+T0501 := T0005[1]
+T0502 := T0005[2]
+T0503 := T0005[3]
+T0504 := T0005[4]
+T0505 := T0005[5]
+T0506 := T0005[6]
+T0507 := T0005[7]
+T0508 := T0005[8]
+T0509 := T0005[9]
+T0510 := T0005[10]
+T0511 := T0005[11]
+
+T0601 := T0006[1]
+T0602 := T0006[2]
+T0603 := T0006[3]
+T0604 := T0006[4]
+T0605 := T0006[5]
+T0606 := T0006[6]
+T0607 := T0006[7]
+T0608 := T0006[8]
+T0609 := T0006[9]
+T0610 := T0006[10]
+T0611 := T0006[11]
+
+T0701 := T0007[1]
+T0702 := T0007[2]
+T0703 := T0007[3]
+T0704 := T0007[4]
+T0705 := T0007[5]
+T0706 := T0007[6]
+T0707 := T0007[7]
+T0708 := T0007[8]
+T0709 := T0007[9]
+T0710 := T0007[10]
+T0711 := T0007[11]
+
+T0801 := T0008[1]
+T0802 := T0008[2]
+T0803 := T0008[3]
+T0804 := T0008[4]
+T0805 := T0008[5]
+T0806 := T0008[6]
+T0807 := T0008[7]
+T0808 := T0008[8]
+T0809 := T0008[9]
+T0810 := T0008[10]
+T0811 := T0008[11]
+
+T0901 := T0009[1]
+T0902 := T0009[2]
+T0903 := T0009[3]
+T0904 := T0009[4]
+T0905 := T0009[5]
+T0906 := T0009[6]
+T0907 := T0009[7]
+T0908 := T0009[8]
+T0909 := T0009[9]
+T0910 := T0009[10]
+T0911 := T0009[11]
+
+T1001 := T0010[1]
+T1002 := T0010[2]
+T1003 := T0010[3]
+T1004 := T0010[4]
+T1005 := T0010[5]
+T1006 := T0010[6]
+T1007 := T0010[7]
+T1008 := T0010[8]
+T1009 := T0010[9]
+T1010 := T0010[10]
+T1011 := T0010[11]
+
+T1101 := T0011[1]
+T1102 := T0011[2]
+T1103 := T0011[3]
+T1104 := T0011[4]
+T1105 := T0011[5]
+T1106 := T0011[6]
+T1107 := T0011[7]
+T1108 := T0011[8]
+T1109 := T0011[9]
+T1110 := T0011[10]
+T1111 := T0011[11]
+
+Ttv01 := T2222[1]
+
+######################################################
+
+#terrain 2 RANDOM
+
+Tmv01 := T2111[1]
+Tmv02 := T2111[2]
+Tmv03 := T2111[3]
+Tmv04 := T2111[4]
+Tmv05 := T2111[5]
+Tmv06 := T2111[6]
+
+T0101 := T2001[1]
+T0102 := T2001[2]
+T0103 := T2001[3]
+T0104 := T2001[4]
+T0105 := T2001[5]
+T0106 := T2001[6]
+T0107 := T2001[7]
+T0108 := T2001[8]
+T0109 := T2001[9]
+T0110 := T2001[10]
+T0111 := T2001[11]
+
+T0201 := T2002[1]
+T0202 := T2002[2]
+T0203 := T2002[3]
+T0204 := T2002[4]
+T0205 := T2002[5]
+T0206 := T2002[6]
+T0207 := T2002[7]
+T0208 := T2002[8]
+T0209 := T2002[9]
+T0210 := T2002[10]
+T0211 := T2002[11]
+
+T0301 := T2003[1]
+T0302 := T2003[2]
+T0303 := T2003[3]
+T0304 := T2003[4]
+T0305 := T2003[5]
+T0306 := T2003[6]
+T0307 := T2003[7]
+T0308 := T2003[8]
+T0309 := T2003[9]
+T0310 := T2003[10]
+T0311 := T2003[11]
+
+T0401 := T2004[1]
+T0402 := T2004[2]
+T0403 := T2004[3]
+T0404 := T2004[4]
+T0405 := T2004[5]
+T0406 := T2004[6]
+T0407 := T2004[7]
+T0408 := T2004[8]
+T0409 := T2004[9]
+T0410 := T2004[10]
+T0411 := T2004[11]
+
+T0501 := T2005[1]
+T0502 := T2005[2]
+T0503 := T2005[3]
+T0504 := T2005[4]
+T0505 := T2005[5]
+T0506 := T2005[6]
+T0507 := T2005[7]
+T0508 := T2005[8]
+T0509 := T2005[9]
+T0510 := T2005[10]
+T0511 := T2005[11]
+
+T0601 := T2006[1]
+T0602 := T2006[2]
+T0603 := T2006[3]
+T0604 := T2006[4]
+T0605 := T2006[5]
+T0606 := T2006[6]
+T0607 := T2006[7]
+T0608 := T2006[8]
+T0609 := T2006[9]
+T0610 := T2006[10]
+T0611 := T2006[11]
+
+T0701 := T2007[1]
+T0702 := T2007[2]
+T0703 := T2007[3]
+T0704 := T2007[4]
+T0705 := T2007[5]
+T0706 := T2007[6]
+T0707 := T2007[7]
+T0708 := T2007[8]
+T0709 := T2007[9]
+T0710 := T2007[10]
+T0711 := T2007[11]
+
+T0801 := T2008[1]
+T0802 := T2008[2]
+T0803 := T2008[3]
+T0804 := T2008[4]
+T0805 := T2008[5]
+T0806 := T2008[6]
+T0807 := T2008[7]
+T0808 := T2008[8]
+T0809 := T2008[9]
+T0810 := T2008[10]
+T0811 := T2008[11]
+
+T0901 := T2009[1]
+T0902 := T2009[2]
+T0903 := T2009[3]
+T0904 := T2009[4]
+T0905 := T2009[5]
+T0906 := T2009[6]
+T0907 := T2009[7]
+T0908 := T2009[8]
+T0909 := T2009[9]
+T0910 := T2009[10]
+T0911 := T2009[11]
+
+T1001 := T2010[1]
+T1002 := T2010[2]
+T1003 := T2010[3]
+T1004 := T2010[4]
+T1005 := T2010[5]
+T1006 := T2010[6]
+T1007 := T2010[7]
+T1008 := T2010[8]
+T1009 := T2010[9]
+T1010 := T2010[10]
+T1011 := T2010[11]
+
+T1101 := T2011[1]
+T1102 := T2011[2]
+T1103 := T2011[3]
+T1104 := T2011[4]
+T1105 := T2011[5]
+T1106 := T2011[6]
+T1107 := T2011[7]
+T1108 := T2011[8]
+T1109 := T2011[9]
+T1110 := T2011[10]
+T1111 := T2011[11]
+
+Ttv01 := T2222[1]
+
+#############################################################
+#############################################################
+#############################################################
+#############################################################
+
+#print 
+
+#SPHERE1
+write(out1,S0001)
+write(out1,S0002)
+write(out1,S0003)
+write(out1,S0004)
+write(out1,S0005)
+#SPHERE2
+write(out1,S1001)
+write(out1,S1002)
+write(out1,S1003)
+write(out1,S1004)
+write(out1,S1005)
+#SPHERE3
+write(out1,S2001)
+write(out1,S2002)
+write(out1,S2003)
+write(out1,S2004)
+write(out1,S2005)
+#SPHERE4
+write(out1,S3001)
+write(out1,S3002)
+write(out1,S3003)
+write(out1,S3004)
+write(out1,S3005)
+#SPHERE5
+write(out1,S4001)
+write(out1,S4002)
+write(out1,S4003)
+write(out1,S4004)
+write(out1,S4005)
+#SPHERE6
+write(out1,S5001)
+write(out1,S5002)
+write(out1,S5003)
+write(out1,S5004)
+write(out1,S5005)
+#SPHERE7
+write(out1,S6001)
+write(out1,S6002)
+write(out1,S6003)
+write(out1,S6004)
+write(out1,S6005)
+#SPHERE8
+write(out1,S7001)
+write(out1,S7002)
+write(out1,S7003)
+write(out1,S7004)
+write(out1,S7005)
+#SPHERE9
+write(out1,S8001)
+write(out1,S8002)
+write(out1,S8003)
+write(out1,S8004)
+write(out1,S8005)
+#SPHERE10
+write(out1,S9001)
+write(out1,S9002)
+write(out1,S9003)
+write(out1,S9004)
+write(out1,S9005)
+
+#CYLINDERS1
+write(out1,C1001)
+write(out1,C1002)
+write(out1,C1003)
+write(out1,C1004)
+write(out1,C1005)
+write(out1,C1006)
+write(out1,C1007)
+#CYLINDERS2
+write(out1,C2001)
+write(out1,C2002)
+write(out1,C2003)
+write(out1,C2004)
+write(out1,C2005)
+write(out1,C2006)
+write(out1,C2007)
+#CYLINDERS3
+write(out1,C3001)
+write(out1,C3002)
+write(out1,C3003)
+write(out1,C3004)
+write(out1,C3005)
+write(out1,C3006)
+write(out1,C3007)
+#CYLINDERS4
+write(out1,C4001)
+write(out1,C4002)
+write(out1,C4003)
+write(out1,C4004)
+write(out1,C4005)
+write(out1,C4006)
+write(out1,C4007)
+#CYLINDERS5
+write(out1,C5001)
+write(out1,C5002)
+write(out1,C5003)
+write(out1,C5004)
+write(out1,C5005)
+write(out1,C5006)
+write(out1,C5007)
+#CYLINDERS6
+write(out1,C6001)
+write(out1,C6002)
+write(out1,C6003)
+write(out1,C6004)
+write(out1,C6005)
+write(out1,C6006)
+write(out1,C6007)
+#CYLINDERS7
+write(out1,C7001)
+write(out1,C7002)
+write(out1,C7003)
+write(out1,C7004)
+write(out1,C7005)
+write(out1,C7006)
+write(out1,C7007)
+#CYLINDERS8
+write(out1,C8001)
+write(out1,C8002)
+write(out1,C8003)
+write(out1,C8004)
+write(out1,C8005)
+write(out1,C8006)
+write(out1,C8007)
+#CYLINDERS9
+write(out1,C9001)
+write(out1,C9002)
+write(out1,C9003)
+write(out1,C9004)
+write(out1,C9005)
+write(out1,C9006)
+write(out1,C9007)
+#CYLINDERS10
+write(out1,C0101)
+write(out1,C0102)
+write(out1,C0103)
+write(out1,C0104)
+write(out1,C0105)
+write(out1,C0106)
+write(out1,C0107)
+#CYLINDERS11
+write(out1,C1101)
+write(out1,C1102)
+write(out1,C1103)
+write(out1,C1104)
+write(out1,C1105)
+write(out1,C1106)
+write(out1,C1107)
+#CYLINDERS12
+write(out1,C1201)
+write(out1,C1202)
+write(out1,C1203)
+write(out1,C1204)
+write(out1,C1205)
+write(out1,C1206)
+write(out1,C1207)
+#CYLINDERS13
+write(out1,C1301)
+write(out1,C1302)
+write(out1,C1303)
+write(out1,C1304)
+write(out1,C1305)
+write(out1,C1306)
+write(out1,C1307)
+#CYLINDERS14
+write(out1,C1401)
+write(out1,C1402)
+write(out1,C1403)
+write(out1,C1404)
+write(out1,C1405)
+write(out1,C1406)
+write(out1,C1407)
+#CYLINDERS15
+write(out1,C1501)
+write(out1,C1502)
+write(out1,C1503)
+write(out1,C1504)
+write(out1,C1505)
+write(out1,C1506)
+write(out1,C1507)
+#CYLINDERS16
+write(out1,C1601)
+write(out1,C1602)
+write(out1,C1603)
+write(out1,C1604)
+write(out1,C1605)
+write(out1,C1606)
+write(out1,C1607)
+#CYLINDERS17
+write(out1,C1701)
+write(out1,C1702)
+write(out1,C1703)
+write(out1,C1704)
+
+write(out1,C1705)
+write(out1,C1706)
+write(out1,C1707)
+#CYLINDERS18
+write(out1,C1801)
+write(out1,C1802)
+write(out1,C1803)
+write(out1,C1804)
+write(out1,C1805)
+write(out1,C1806)
+write(out1,C1807)
+#CYLINDERS19
+write(out1,C1901)
+write(out1,C1902)
+write(out1,C1903)
+write(out1,C1904)
+write(out1,C1905)
+write(out1,C1906)
+write(out1,C1907)
+#CYLINDERS20
+write(out1,C0021)
+write(out1,C0022)
+write(out1,C0023)
+write(out1,C0024)
+write(out1,C0025)
+write(out1,C0026)
+write(out1,C0027)
+
+#PLANE1
+write(out1,P1001)
+write(out1,P1002)
+write(out1,P1003)
+write(out1,P1004)
+write(out1,P1005)
+write(out1,P1006)
+write(out1,P1007)
+write(out1,P1008)
+write(out1,P1009)
+write(out1,P1010)
+write(out1,P1011)
+write(out1,P1012)
+write(out1,P1013)
+#PLANE2
+write(out1,P2001)
+write(out1,P2002)
+write(out1,P2003)
+write(out1,P2004)
+write(out1,P2005)
+write(out1,P2006)
+write(out1,P2007)
+write(out1,P2008)
+write(out1,P2009)
+write(out1,P2010)
+write(out1,P2011)
+write(out1,P2012)
+write(out1,P2013)
+#PLANE3
+write(out1,P3001)
+write(out1,P3002)
+write(out1,P3003)
+write(out1,P3004)
+write(out1,P3005)
+write(out1,P3006)
+write(out1,P3007)
+write(out1,P3008)
+write(out1,P3009)
+write(out1,P3010)
+write(out1,P3011)
+write(out1,P3012)
+write(out1,P3013)
+#PLANE4
+write(out1,P4001)
+write(out1,P4002)
+write(out1,P4003)
+write(out1,P4004)
+write(out1,P4005)
+write(out1,P4006)
+write(out1,P4007)
+write(out1,P4008)
+write(out1,P4009)
+write(out1,P4010)
+write(out1,P4011)
+write(out1,P4012)
+write(out1,P4013)
+#PLANE5
+write(out1,P5001)
+write(out1,P5002)
+write(out1,P5003)
+write(out1,P5004)
+write(out1,P5005)
+write(out1,P5006)
+write(out1,P5007)
+write(out1,P5008)
+write(out1,P5009)
+write(out1,P5010)
+write(out1,P5011)
+write(out1,P5012)
+write(out1,P5013)
+#PLANE6
+write(out1,P6001)
+write(out1,P6002)
+write(out1,P6003)
+write(out1,P6004)
+write(out1,P6005)
+write(out1,P6006)
+write(out1,P6007)
+write(out1,P6008)
+write(out1,P6009)
+write(out1,P6010)
+write(out1,P6011)
+write(out1,P6012)
+write(out1,P6013)
+#PLANE7
+write(out1,P7001)
+write(out1,P7002)
+write(out1,P7003)
+write(out1,P7004)
+write(out1,P7005)
+write(out1,P7006)
+write(out1,P7007)
+write(out1,P7008)
+write(out1,P7009)
+write(out1,P7010)
+write(out1,P7011)
+write(out1,P7012)
+write(out1,P7013)
+#PLANE8
+write(out1,P8001)
+write(out1,P8002)
+write(out1,P8003)
+write(out1,P8004)
+write(out1,P8005)
+write(out1,P8006)
+write(out1,P8007)
+write(out1,P8008)
+write(out1,P8009)
+write(out1,P8010)
+write(out1,P8011)
+write(out1,P8012)
+write(out1,P8013)
+#PLANE9
+write(out1,P9001)
+write(out1,P9002)
+write(out1,P9003)
+write(out1,P9004)
+write(out1,P9005)
+write(out1,P9006)
+write(out1,P9007)
+write(out1,P9008)
+write(out1,P9009)
+write(out1,P9010)
+write(out1,P9011)
+write(out1,P9012)
+write(out1,P9013)
+#PLANE10
+write(out1,P0101)
+write(out1,P0102)
+write(out1,P0103)
+write(out1,P0104)
+write(out1,P0105)
+write(out1,P0106)
+write(out1,P0107)
+write(out1,P0108)
+write(out1,P0109)
+write(out1,P0110)
+write(out1,P0111)
+write(out1,P0112)
+write(out1,P0113)
+
+#terrain1 main vals
+write(out1,Tmv01)
+write(out1,Tmv02)
+write(out1,Tmv03)
+write(out1,Tmv04)
+write(out1,Tmv05)
+write(out1,Tmv06)
+
+#terrain1
+write(out1,T0101)
+write(out1,T0102)
+write(out1,T0103)
+write(out1,T0104)
+write(out1,T0105)
+write(out1,T0106)
+write(out1,T0107)
+write(out1,T0108)
+write(out1,T0109)
+write(out1,T0110)
+write(out1,T0111)
+
+write(out1,T0201)
+write(out1,T0202)
+write(out1,T0203)
+write(out1,T0204)
+write(out1,T0205)
+write(out1,T0206)
+write(out1,T0207)
+write(out1,T0208)
+write(out1,T0209)
+write(out1,T0210)
+write(out1,T0211)
+
+write(out1,T0301)
+write(out1,T0302)
+write(out1,T0303)
+write(out1,T0304)
+write(out1,T0305)
+write(out1,T0306)
+write(out1,T0307)
+write(out1,T0308)
+write(out1,T0309)
+write(out1,T0310)
+write(out1,T0311)
+
+write(out1,T0401)
+write(out1,T0402)
+write(out1,T0403)
+write(out1,T0404)
+write(out1,T0405)
+write(out1,T0406)
+write(out1,T0407)
+write(out1,T0408)
+write(out1,T0409)
+write(out1,T0410)
+write(out1,T0411)
+
+write(out1,T0501)
+write(out1,T0502)
+write(out1,T0503)
+write(out1,T0504)
+write(out1,T0505)
+write(out1,T0506)
+write(out1,T0507)
+write(out1,T0508)
+write(out1,T0509)
+write(out1,T0510)
+write(out1,T0511)
+
+write(out1,T0601)
+write(out1,T0602)
+write(out1,T0603)
+write(out1,T0604)
+write(out1,T0605)
+write(out1,T0606)
+write(out1,T0607)
+write(out1,T0608)
+write(out1,T0609)
+write(out1,T0610)
+write(out1,T0611)
+
+write(out1,T0701)
+write(out1,T0702)
+write(out1,T0703)
+write(out1,T0704)
+write(out1,T0705)
+write(out1,T0706)
+write(out1,T0707)
+write(out1,T0708)
+write(out1,T0709)
+write(out1,T0710)
+write(out1,T0711)
+
+write(out1,T0801)
+write(out1,T0802)
+write(out1,T0803)
+write(out1,T0804)
+write(out1,T0805)
+write(out1,T0806)
+write(out1,T0807)
+write(out1,T0808)
+write(out1,T0809)
+write(out1,T0810)
+write(out1,T0811)
+
+write(out1,T0901)
+write(out1,T0902)
+write(out1,T0903)
+write(out1,T0904)
+write(out1,T0905)
+write(out1,T0906)
+write(out1,T0907)
+write(out1,T0908)
+write(out1,T0909)
+write(out1,T0910)
+write(out1,T0911)
+
+write(out1,T1001)
+write(out1,T1002)
+write(out1,T1003)
+write(out1,T1004)
+write(out1,T1005)
+write(out1,T1006)
+write(out1,T1007)
+write(out1,T1008)
+write(out1,T1009)
+write(out1,T1010)
+write(out1,T1011)
+
+write(out1,T1101)
+write(out1,T1102)
+write(out1,T1103)
+write(out1,T1104)
+write(out1,T1105)
+write(out1,T1106)
+write(out1,T1107)
+write(out1,T1108)
+write(out1,T1109)
+write(out1,T1110)
+write(out1,T1111)
+
+write(out1,Ttv01)
+
+write(out1,V1001) 
+write(out1,V1002) 
+write(out1,V1003) 
+write(out1,V1004) 
+write(out1,V1005) 
+write(out1,V1006) 
+write(out1,V1007) 
+write(out1,V1008) 
+write(out1,V1009) 
+
+write(out1,"")
+write(out1,"")
+
+#return
+
+end
+
+##############################################################
+
+#add voxels, particles etc etc
+#tpcubemain01(!L,i,o)#! might work?????
+
+##############################################################
+
+
+##############################################################
+
+
+
+
+
+    
+
+###########################################################
+###########################################################
+
+#HTML WEB GET TYPE STUFF?
+
+###########################################################
+
+#r griswolds calc?
+
+############################################################
+
+#TRANSIT-NON GL ANIMATIONS (NEEDS ESCAPE)
+
+############################################################
+
+#RABBITT (NEEDS ESCAPE)
+
+############################################################
+
+#system call stuff gnometerm etc
+#procedure nws()
+#system("links2 http://forecast.weather.gov/MapClick.php?lat=31.797056835116557&lon=-#111.005859375&site=twc&unit=0&lg=en&FcstType=text")
+#end
+
+############################################################

@@ -258,8 +258,8 @@ procedure execprogz()
 #	execute the command
 	#system(command)
         #system("./unicon finedit.icn")
-        #system("./finedit")
-        system("./run")
+        system("gnome-terminal -e ./run")
+      
 end
 
 procedure seqprog()
